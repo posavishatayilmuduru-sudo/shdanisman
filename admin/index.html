@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SH Danışmanlık | Yönetim Paneli</title>
+  <link rel="icon" type="image/webp" href="/logo.webp" />
+  <style>
+    /* ── LOADING SCREEN ─────────────────────────── */
+    #cms-loading {
+      position: fixed; inset: 0;
+      background: #0d1f35;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.4s ease;
+    }
+    #cms-loading img { width: 120px; margin-bottom: 24px; }
+    #cms-loading p {
+      color: #7ca8d0; font-family: 'Segoe UI', sans-serif;
+      font-size: 14px; margin: 0;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+    #cms-loading.hidden { opacity: 0; pointer-events: none; }
+
+    /* ── GLOBAL CMS OVERRIDES ───────────────────── */
+
+    /* Header / Top Bar */
+    [class*="AppHeader"],
+    [class*="app-header"] {
+      background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 100%) !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.35) !important;
+    }
+    [class*="AppHeader"] a,
+    [class*="AppHeader"] button,
+    [class*="app-header"] a { color: #e8f4ff !important; }
+
+    /* Sidebar Navigation */
+    [class*="SidebarNavList"],
+    [class*="Collection"] nav,
+    aside[class*="nav"] {
+      background: #f7f9fc !important;
+      border-right: 1px solid #dde5ef !important;
+    }
+    [class*="SidebarNavList"] a,
+    [class*="NavLink"] {
+      color: #1a3a5c !important;
+      font-weight: 500 !important;
+      border-radius: 6px !important;
+      transition: background 0.15s !important;
+    }
+    [class*="NavLink"]:hover,
+    [class*="NavLink"][class*="active"] {
+      background: #e0ecfb !important;
+      color: #0a2540 !important;
+    }
+
+    /* Collection List Items */
+    [class*="EntryCard"],
+    [class*="ListCard"] {
+      border-radius: 8px !important;
+      border: 1px solid #e0e8f0 !important;
+      transition: box-shadow 0.15s, transform 0.15s !important;
+    }
+    [class*="EntryCard"]:hover,
+    [class*="ListCard"]:hover {
+      box-shadow: 0 4px 16px rgba(26,58,92,0.12) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Primary Buttons */
+    [class*="PublishButton"],
+    button[class*="primary"],
+    [class*="Button"][class*="primary"] {
+      background: #1a3a5c !important;
+      border-color: #1a3a5c !important;
+      border-radius: 6px !important;
+    }
+    [class*="PublishButton"]:hover,
+    button[class*="primary"]:hover {
+      background: #0a2540 !important;
+    }
+
+    /* Toolbar (editor markdown toolbar) */
+    [class*="ToolbarButton"] {
+      color: #1a3a5c !important;
+      border-radius: 4px !important;
+    }
+    [class*="ToolbarButton"]:hover { background: #dde8f7 !important; }
+
+    /* Field Labels */
+    [class*="ControlLabel"],
+    label[class*="label"] {
+      color: #0a2540 !important;
+      font-weight: 600 !important;
+      font-size: 12px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    /* Input / Textarea fields */
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    [class*="StringInput"],
+    [class*="TextInput"] {
+      border-color: #c4d4e8 !important;
+      border-radius: 6px !important;
+      transition: border-color 0.15s, box-shadow 0.15s !important;
+    }
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #1a3a5c !important;
+      box-shadow: 0 0 0 3px rgba(26,58,92,0.12) !important;
+    }
+
+    /* Hint text */
+    [class*="ControlHint"],
+    [class*="hint"] {
+      color: #6b8aaa !important;
+      font-style: italic !important;
+    }
+
+    /* Select dropdowns */
+    select, [class*="SelectControl"] {
+      border-color: #c4d4e8 !important;
+      border-radius: 6px !important;
+    }
+
+    /* Boolean toggle */
+    [class*="Toggle"] input:checked + span {
+      background: #1a3a5c !important;
+    }
+
+    /* Image upload area */
+    [class*="ImageControl"],
+    [class*="FileControl"] {
+      border: 2px dashed #c4d4e8 !important;
+      border-radius: 8px !important;
+      background: #f7f9fc !important;
+    }
+
+    /* Markdown editor */
+    [class*="MarkdownEditor"],
+    .cms-editor-markdown {
+      border: 1px solid #c4d4e8 !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+    }
+
+    /* Category / Select options */
+    [class*="SelectOption"]:hover {
+      background: #e0ecfb !important;
+    }
+    [class*="SelectOption"][class*="selected"] {
+      background: #1a3a5c !important;
+      color: white !important;
+    }
+
+    /* Preview pane toggle */
+    [class*="PreviewToggle"] {
+      background: #e0ecfb !important;
+      color: #1a3a5c !important;
+    }
+
+    /* Breadcrumb */
+    [class*="Breadcrumb"],
+    [class*="breadcrumb"] { color: #6b8aaa !important; }
+
+    /* Status badge (Published / Draft) */
+    [class*="StatusBadge"][class*="published"],
+    [class*="PublishedBadge"] {
+      background: #d1fae5 !important;
+      color: #065f46 !important;
+      border-radius: 4px !important;
+    }
+    [class*="StatusBadge"][class*="draft"],
+    [class*="DraftBadge"] {
+      background: #fef3c7 !important;
+      color: #92400e !important;
+      border-radius: 4px !important;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f0f4f8; }
+    ::-webkit-scrollbar-thumb { background: #b0c4d8; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1a3a5c; }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="cms-loading">
+    <img src="/logo.webp" alt="SH Danışmanlık" onerror="this.style.display='none'" />
+    <p>Yönetim Paneli Yükleniyor…</p>
+  </div>
+
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Hide loading screen once CMS mounts
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        var el = document.getElementById('cms-loading');
+        if (el) {
+          el.classList.add('hidden');
+          setTimeout(function () { el.remove(); }, 500);
+        }
+      }, 1800);
+    });
+
+    // Türkçe tarih formatı için yardımcı
+    if (window.CMS) {
+      CMS.registerPreviewStyle('/admin/preview.css');
+    }
+  </script>
+
+</body>
+</html>
