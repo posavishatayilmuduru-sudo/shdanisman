@@ -1,0 +1,217 @@
+backend:
+  name: git-gateway
+  branch: main
+
+display_url: https://shdanismanlik.netlify.app
+logo_url: https://shdanismanlik.netlify.app/logo.webp
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  # =============================================
+  # 1. BLOG & MAKALELER (Tam CMS Kontrolü)
+  # =============================================
+  - name: "blog"
+    label: "Blog & Makaleler"
+    label_singular: "Blog Yazisi"
+    folder: "content/blog"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} - {{category}} - {{date | dateformat('DD.MM.YYYY')}}"
+    sortable_fields: ["date", "title", "category"]
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/blog-post.html"}
+      - {label: "Yazi Basligi", name: "title", widget: "string", hint: "Blog yazisinin ana basligi"}
+      - {label: "SEO Aciklamasi", name: "description", widget: "text", hint: "Google'da gorunecek aciklama (max 160 karakter)"}
+      - {label: "Yayin Tarihi", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false}
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options:
+          - {label: "Mevzuat", value: "Mevzuat"}
+          - {label: "STK Rehberi", value: "STK Rehberi"}
+          - {label: "Duyurular", value: "Duyurular"}
+          - {label: "Basari Hikayeleri", value: "Basari Hikayeleri"}
+          - {label: "Rehber", value: "Rehber"}
+          - {label: "Finansal Strateji", value: "Finansal Strateji"}
+      - {label: "Kapak Gorseli", name: "image", widget: "image", required: false, hint: "Blog yazisinin ust gorseli (opsiyonel)"}
+      - {label: "Kisa Ozet", name: "excerpt", widget: "text", required: false, hint: "Banner altinda gorunecek kisa aciklama"}
+      - {label: "Yazi Icerigi", name: "body", widget: "markdown", hint: "Yazinizi buraya ekleyin. Baslik, liste, kalin yazi kullanabilirsiniz."}
+
+  # =============================================
+  # 2. HIZMET SAYFALARI (Sadece Metin Duzenleme)
+  # =============================================
+  - name: "services"
+    label: "Hizmet Sayfalari"
+    editor:
+      preview: false
+    files:
+      - file: "hizmet-dernek-kurulusu.html"
+        label: "Dernek Kurulusu"
+        name: "dernek-kurulusu"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Basligi", name: "sidebar_title", widget: "string", required: false}
+          - {label: "Sidebar Maddeler", name: "sidebar_items", widget: "list", required: false}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-dernek-kurulusu.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-derbis.html"
+        label: "DERBIS Islemleri"
+        name: "derbis"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-derbis.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-vakif-kurulusu.html"
+        label: "Vakif Kurulusu"
+        name: "vakif-kurulusu"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-vakif-kurulusu.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-genel-kurul.html"
+        label: "Genel Kurul Yonetimi"
+        name: "genel-kurul"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-genel-kurul.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-mali-danismanlik.html"
+        label: "Mali Danismanlik"
+        name: "mali-danismanlik"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-mali-danismanlik.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-proje-yazma.html"
+        label: "Proje ve Fon Gelistirme"
+        name: "proje-yazma"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-proje-yazma.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+      - file: "hizmet-yasal-danismanlik.html"
+        label: "Yasal Danismanlik"
+        name: "yasal-danismanlik"
+        fields:
+          - {label: "Layout", name: "layout", widget: "hidden", default: "layouts/base.html"}
+          - {label: "Sayfa Basligi", name: "title", widget: "string"}
+          - {label: "SEO Aciklamasi", name: "description", widget: "text"}
+          - {label: "Banner Alt Yazi", name: "excerpt", widget: "string"}
+          - {label: "Banner Gorseli", name: "banner_image", widget: "image"}
+          - {label: "Sidebar Teklif Metni", name: "sidebar_cta_text", widget: "text", required: false}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/hizmet-yasal-danismanlik.html"}
+          - {label: "Sayfa Icerigi (HTML)", name: "body", widget: "code", default_language: "html", hint: "Sayfanin ana icerik kismi. HTML formatindadir."}
+
+  # =============================================
+  # 3. SITE GENEL AYARLARI
+  # =============================================
+  - name: "settings"
+    label: "Site Ayarlari"
+    editor:
+      preview: false
+    files:
+      - file: "content/settings.json"
+        label: "Iletisim ve Genel Bilgiler"
+        name: "general_settings"
+        fields:
+          - {label: "Site Adi", name: "site_name", widget: "string", default: "SH Danismanlik"}
+          - {label: "Telefon (Gorunen)", name: "phone", widget: "string", hint: "Sitede gorunecek telefon formati: +90 534 705 42 34"}
+          - {label: "Telefon (Ham)", name: "phone_raw", widget: "string", hint: "Sadece rakam: 905347054234"}
+          - {label: "E-Posta", name: "email", widget: "string"}
+          - {label: "Adres", name: "address", widget: "string"}
+          - {label: "WhatsApp Numarasi", name: "whatsapp", widget: "string", hint: "Sadece rakam: 905347054234"}
+          - {label: "Footer Slogani", name: "footer_slogan", widget: "string", default: "Bize Ugrayin, Burokrasiye Takilmayin"}
+          - {label: "Telif Hakki Yili", name: "copyright_year", widget: "string", default: "2026"}
+          - label: "Sosyal Medya Linkleri"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "LinkedIn URL", name: "linkedin", widget: "string", default: "#"}
+              - {label: "Twitter URL", name: "twitter", widget: "string", default: "#"}
+              - {label: "Instagram URL", name: "instagram", widget: "string", default: "#"}
+
+  # =============================================
+  # 4. ANA SAYFA YONETIMI
+  # =============================================
+  - name: "homepage"
+    label: "Ana Sayfa"
+    editor:
+      preview: false
+    files:
+      - file: "content/homepage.json"
+        label: "Ana Sayfa Icerikleri"
+        name: "homepage_content"
+        fields:
+          - label: "1. Banner (Slider)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Baslik", name: "title", widget: "string"}
+              - {label: "Alt Yazi", name: "subtitle", widget: "text"}
+              - {label: "Buton Yazisi", name: "cta_text", widget: "string"}
+              - {label: "Buton Linki", name: "cta_link", widget: "string"}
+          - label: "2. Banner (Slider)"
+            name: "hero2"
+            widget: "object"
+            fields:
+              - {label: "Baslik", name: "title", widget: "string"}
+              - {label: "Alt Yazi", name: "subtitle", widget: "text"}
+              - {label: "Buton Yazisi", name: "cta_text", widget: "string"}
+              - {label: "Buton Linki", name: "cta_link", widget: "string"}
+          - label: "3. Banner (Slider)"
+            name: "hero3"
+            widget: "object"
+            fields:
+              - {label: "Baslik", name: "title", widget: "string"}
+              - {label: "Alt Yazi", name: "subtitle", widget: "text"}
+              - {label: "Buton Yazisi", name: "cta_text", widget: "string"}
+              - {label: "Buton Linki", name: "cta_link", widget: "string"}
+          - label: "Istatistikler (Rakamlar)"
+            name: "stats"
+            widget: "object"
+            fields:
+              - {label: "Yillik Tecrube", name: "experience_years", widget: "string"}
+              - {label: "Basarili Proje", name: "successful_projects", widget: "string"}
+              - {label: "Aktif STK Partneri", name: "active_partners", widget: "string"}
+              - {label: "Egitim Alan Katilimci", name: "trained_participants", widget: "string"}
+          - {label: "Hakkimizda Kisa Baslik", name: "about_short", widget: "string"}
+          - {label: "Hakkimizda Kisa Metin", name: "about_text", widget: "text"}
