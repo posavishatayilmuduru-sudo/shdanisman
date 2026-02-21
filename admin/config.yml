@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-display_url: https://shdanismanlik.netlify.app
-logo_url: https://shdanismanlik.netlify.app/logo.webp
+display_url: https://delicate-malabi-f30496.netlify.app
+logo_url: https://delicate-malabi-f30496.netlify.app/logo.webp
 locale: "tr"
 
 media_folder: "img"
