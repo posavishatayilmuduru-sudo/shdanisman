@@ -104,10 +104,12 @@
 
         <!-- BİLGİ BANKASI -->
         <li class="dropdown">
-          <a href="#" {% if "mevzuat" in page.url or "blog" in page.url %}class="active"{% endif %}>Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
+          <a href="#" {% if "mevzuat" in page.url or "blog" in page.url or "basari" in page.url %}class="active"{% endif %}>Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/mevzuat/" {% if "mevzuat" in page.url %}class="active"{% endif %}>Mevzuatlar</a></li>
-            <li><a href="/blog/" {% if "blog" in page.url %}class="active"{% endif %}>Blog & Makaleler</a></li>
+            <li><a href="/mevzuat/" {% if page.url == "/mevzuat/" %}class="active"{% endif %}>Mevzuatlar</a></li>
+            <li><a href="/blog-dernek-yonetici-sorumluluklari/" {% if "yonetici" in page.url %}class="active"{% endif %}>Yönetici Sorumlulukları</a></li>
+            <li><a href="/blog-stk-iktisadi-isletme-avantajlari/" {% if "iktisadi" in page.url %}class="active"{% endif %}>İktisadi İşletme Avantajları</a></li>
+            <li><a href="/blog/" {% if page.url == "/blog/" %}class="active"{% endif %}>Blog & Makaleler</a></li>
           </ul>
         </li>
 
