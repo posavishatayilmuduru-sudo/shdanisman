@@ -1,55 +1,18 @@
----
-layout: layouts/fullwidth.html
-title: "İletişim"
-description: "Dernek ve vakıf kurulumu, genel kurul yönetimi ve mali danışmanlık süreçleriniz için SH Danışmanlık ile iletişime geçin. Uzman ekibimizle yanınızdayız."
-excerpt: "Sivil toplum hedeflerinizi birlikte gerçekleştirelim. Uzmanlarımız size bir adım uzaklıkta."
-banner_image: "/img/banner2.webp"
-permalink: "/iletisim.html"
----
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | SH Danışmanlık</title>
+    <meta name="description" content="Dernek ve vakıf kurulumu, genel kurul yönetimi ve mali danışmanlık süreçleriniz için SH Danışmanlık ile iletişime geçin.">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/logo.webp" type="image/webp">
 
-<style>
-        /* KURUMSAL WHATSAPP WIDGET */
-        .wa-floating-btn { 
-            position: fixed; 
-            bottom: 25px; 
-            left: 25px; 
-            z-index: 9999; 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-        }
-        .wa-icon { 
-            background-color: #25d366; 
-            color: white !important; 
-            width: 60px; 
-            height: 60px; 
-            border-radius: 50px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 32px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-        }
-        .wa-label { 
-            background: white; 
-            color: #333; 
-            padding: 10px 18px; 
-            border-radius: 25px; 
-            margin-left: 12px; 
-            font-size: 14px; 
-            font-weight: 600; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-            white-space: nowrap; 
-        }
-        @media (max-width: 768px) { 
-            .wa-label { display: none; } 
-        }
-        .wa-floating-btn:hover { 
-            transform: translateY(-3px); 
-        }
-        
-        /* PROFESYONEL İLETİŞİM SAYFASI STİLİ */
+    <style>
         .contact-grid-wrapper { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -109,7 +72,6 @@ permalink: "/iletisim.html"
             text-decoration: underline;
         }
         
-        /* KURUMSAL FORM STİLİ */
         .contact-form-side h2 {
             color: #1a237e;
             margin-bottom: 10px;
@@ -186,7 +148,6 @@ permalink: "/iletisim.html"
             transform: translateY(0);
         }
         
-        /* RESPONSİVE TASARIM */
         @media (max-width: 992px) { 
             .contact-grid-wrapper { 
                 grid-template-columns: 1fr; 
@@ -202,7 +163,6 @@ permalink: "/iletisim.html"
             }
         }
         
-        /* HARİTA BÖLÜMÜ */
         .map-section {
             margin-top: 50px;
             border-radius: 15px;
@@ -214,13 +174,66 @@ permalink: "/iletisim.html"
             display: block;
         }
     </style>
+</head>
+<body>
 
-<!-- CONTACT CONTENT AREA -->
+<header class="main-header">
+  <div class="container header-container">
+    <a href="/" class="logo-container">
+      <img src="/logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" />
+    </a>
+    <nav class="main-nav">
+      <button class="nav-close-btn" aria-label="Menüyü kapat"><i class="fas fa-times"></i></button>
+      <ul>
+        <li><a href="/">Ana Sayfa</a></li>
+        <li class="dropdown">
+          <a href="#">Kurumsal <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="/sss.html">Sıkça Sorulan Sorular</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+            <li><a href="/hizmet-derbis.html">DERBİS İşlemleri</a></li>
+            <li><a href="/hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+            <li><a href="/hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+            <li><a href="/hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+            <li><a href="/hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+            <li><a href="/hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="/mevzuat.html">Mevzuatlar</a></li>
+            <li><a href="/blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li>
+            <li><a href="/blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
+            <li><a href="/blog.html">Blog & Makaleler</a></li>
+          </ul>
+        </li>
+        <li><a href="/referanslar.html">Referanslar</a></li>
+        <li><a href="/iletisim.html" class="active">İletişim</a></li>
+      </ul>
+    </nav>
+    <button class="nav-open-btn" aria-label="Menüyü aç"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<main>
+    <section class="page-header" style="background-image: url('/img/banner2.webp');">
+        <div class="container">
+            <h1>İletişim</h1>
+            <p>Sivil toplum hedeflerinizi birlikte gerçekleştirelim. Uzmanlarımız size bir adım uzaklıkta.</p>
+        </div>
+    </section>
+
     <section class="page-content">
         <div class="container">
             <div class="contact-grid-wrapper">
                 
-                <!-- SOL SÜTUN: İLETİŞİM BİLGİLERİ -->
                 <div class="contact-info">
                     <h2>Bizimle İletişime Geçin</h2>
                     <p style="margin-bottom: 30px;">Dernek ve vakıf süreçlerindeki her türlü sorunuz için bize aşağıdaki kanallardan ulaşabilir veya ofisimizde bizi ziyaret edebilirsiniz.</p>
@@ -246,7 +259,7 @@ permalink: "/iletisim.html"
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>E-Posta</h4>
-                                <p><a href="/cdn-cgi/l/email-protection#0d64636b624d7e65696c63647e606c63616466236e6260"><span class="__cf_email__" data-cfemail="0d64636b624d7e65696c63647e606c63616466236e6260">[email&#160;protected]</span></a></p>
+                                <p><a href="mailto:info@stkdanismanlik.com">info@stkdanismanlik.com</a></p>
                             </div>
                         </div>
 
@@ -260,66 +273,53 @@ permalink: "/iletisim.html"
                     </div>
                 </div>
 
-                <!-- SAĞ SÜTUN: İLETİŞİM FORMU -->
                 <div class="contact-form-side">
                     <h2>Danışmanlık Talep Formu</h2>
                     <p style="margin-bottom: 25px; color: #666;">Hizmetlerimiz hakkında detaylı bilgi ve teklif almak için formu doldurun.</p>
                     
-                    <!-- SADECE BU FORM KODUNU ESKİ FORM İLE DEĞİŞTİR -->
-<!-- <form class="contact-form" action="#" method="POST"> BUNU SİL -->
-<!-- </form> KAPATMA ETİKETİNE KADAR HEPSİNİ DEĞİŞTİR -->
-
-<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-    
-    <!-- Web3Forms Access Key - Değiştirme -->
-    <input type="hidden" name="access_key" value="4fe328a0-e03e-4479-85cf-b2b076f4335b">
-    
-    <!-- Form başarılı gönderilince bu sayfaya yönlendirir -->
-    <input type="hidden" name="redirect" value="https://stkdanisman.netlify.app/tesekkurler.html">
-    
-    <!-- Mail konusu -->
-    <input type="hidden" name="subject" value="STK Danışmanlık - Yeni İletişim Formu">
-    
-    <!-- Bot koruması -->
-    <input type="checkbox" name="botcheck" style="display:none;">
-
-    <div class="form-group">
-        <input type="text" name="name" placeholder="Adınız Soyadınız *" required>
-    </div>
-    <div class="form-group">
-        <input type="email" name="email" placeholder="E-posta Adresiniz *" required>
-    </div>
-    <div class="form-group">
-        <input type="tel" name="telefon" placeholder="Telefon Numaranız">
-    </div>
-    <div class="form-group">
-        <select name="hizmet" required>
-            <option value="" disabled selected>İlgilendiğiniz Hizmet *</option>
-            <option value="dernek">Dernek Kuruluşu</option>
-            <option value="derbis">DERBİS İşlemleri</option>
-            <option value="vakif">Vakıf Kuruluşu</option>
-            <option value="genelkurul">Genel Kurul Yönetimi</option>
-            <option value="mali">Mali Danışmanlık</option>
-            <option value="proje">Proje ve Fon Geliştirme</option>
-            <option value="yasal">Yasal Danışmanlık</option>
-            <option value="diger">Diğer</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <textarea name="message" placeholder="Mesajınız... *" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" style="width: 100%;">
-        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
-        Mesajı Gönder
-    </button>
-</form>
+                    <form class="contact-form" name="iletisim" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="iletisim">
+                        
+                        <p style="display: none;">
+                            <label>Bu alanı doldurmayın: <input name="bot-field" /></label>
+                        </p>
+                        
+                        <div class="form-group">
+                            <input type="text" name="ad-soyad" placeholder="Adınız Soyadınız *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="E-posta Adresiniz *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefon" placeholder="Telefon Numaranız">
+                        </div>
+                        <div class="form-group">
+                            <select name="hizmet" required>
+                                <option value="" disabled selected>İlgilendiğiniz Hizmet *</option>
+                                <option value="Dernek Kuruluşu">Dernek Kuruluşu</option>
+                                <option value="DERBİS İşlemleri">DERBİS İşlemleri</option>
+                                <option value="Vakıf Kuruluşu">Vakıf Kuruluşu</option>
+                                <option value="Genel Kurul Yönetimi">Genel Kurul Yönetimi</option>
+                                <option value="Mali Danışmanlık">Mali Danışmanlık</option>
+                                <option value="Proje ve Fon Geliştirme">Proje ve Fon Geliştirme</option>
+                                <option value="Yasal Danışmanlık">Yasal Danışmanlık</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mesaj" placeholder="Mesajınız... *" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                            Mesajı Gönder
+                        </button>
+                    </form>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- HARİTA BÖLÜMÜ (Güncel Adres) -->
     <section class="page-content">
         <div class="container">
             <div class="map-section">
@@ -335,3 +335,50 @@ permalink: "/iletisim.html"
             </div>
         </div>
     </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <p>"Bize Uğrayın, Bürokrasiye Takılmayın"</p>
+                <p>© 2026 SH Danışmanlık. Tüm Hakları Saklıdır.</p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Hızlı Menü</strong></p>
+                <ul>
+                    <li><a href="/hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="/referanslar.html">Referanslar</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p><strong>İletişim</strong></p>
+                <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
+                <p><i class="fas fa-phone"></i> +90 534 705 42 34</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@stkdanismanlik.com" style="color: inherit;">info@stkdanismanlik.com</a></p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Takip Edin</strong></p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="margin-top: 20px; text-align: center; font-size: 14px; color: #999;">
+            <p>© 2026 Tasarım ve Yazılım. Design by <a href="https://akodijital.com" target="_blank" rel="noopener" style="color: #00a8e8; font-weight: 600; text-decoration: none;">AKODİJİTAL</a></p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/905347054234" class="wa-floating-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+    <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
+</a>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

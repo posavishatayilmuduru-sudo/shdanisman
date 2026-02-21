@@ -918,3 +918,42 @@ p, h1, h2, h3, h4, h5, h6, a, li {
     margin-left: 0 !important;
     margin-right: 12px !important;
 }
+/* ============================================
+   WHATSAPP SAĞ TARAFA TAŞI - TÜM SAYFALAR
+   Bu kodu css/style.css dosyasının EN SONUNA ekle
+   ============================================ */
+
+/* Global WhatsApp fix - tüm sayfalarda çalışır */
+.wa-floating-btn {
+    left: auto !important;
+    right: 25px !important;
+    bottom: 25px !important;
+    flex-direction: row-reverse !important;
+}
+
+.wa-floating-btn .wa-label {
+    margin-left: 0 !important;
+    margin-right: 12px !important;
+}
+
+/* Active nav styling */
+.main-nav ul li a.active {
+    color: var(--primary-color, #0d6efd) !important;
+    font-weight: 700 !important;
+}
+
+.main-nav > ul > li > a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color, #0d6efd);
+}
+
+.dropdown-menu li a.active {
+    color: var(--primary-color, #0d6efd) !important;
+    font-weight: 700 !important;
+    background: #f0f7ff !important;
+}
