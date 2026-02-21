@@ -61,9 +61,9 @@
 
     <style>
         /* KURUMSAL WHATSAPP WIDGET (Sıfır JavaScript - Maksimum Hız - Önceki Sayfalarla Aynı) */
-        .wa-floating-btn { position: fixed; bottom: 25px; left: 25px; z-index: 9999; display: flex; align-items: center; text-decoration: none; transition: all 0.3s ease; }
+        .wa-floating-btn { position: fixed; bottom: 25px; right: 25px; left: auto; z-index: 9999; display: flex; align-items: center; flex-direction: row-reverse; text-decoration: none; transition: all 0.3s ease; }
         .wa-icon { background-color: #25d366; color: white !important; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .wa-label { background: white; color: #333; padding: 10px 18px; border-radius: 25px; margin-left: 12px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); white-space: nowrap; }
+        .wa-label { background: white; color: #333; padding: 10px 18px; border-radius: 25px; margin-right: 12px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); white-space: nowrap; }
         @media (max-width: 768px) { .wa-label { display: none; } }
         .wa-floating-btn:hover { transform: translateY(-3px); }
         
@@ -181,29 +181,37 @@
                     <h2>Danışmanlık Talep Formu</h2>
                     <p style="margin-bottom: 20px;">Hizmetlerimiz hakkında detaylı bilgi ve teklif almak için formu doldurun.</p>
                     
-                    <form class="contact-form" action="#" method="POST">
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Zorunlu Alan -->
+                        <input type="hidden" name="access_key" value="4fe328a0-e03e-4479-85cf-b2b076f4335b">
+                        <!-- Bildirim e-postası -->
+                        <input type="hidden" name="subject" value="Yeni Danışmanlık Talebi - SH Danışmanlık">
+                        <input type="hidden" name="from_name" value="SH Danışmanlık Web Sitesi">
+                        <!-- Spam koruması -->
+                        <input type="checkbox" name="botcheck" style="display: none;">
+
                         <div class="form-group">
-                            <input type="text" placeholder="Adınız Soyadınız" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
+                            <input type="text" name="name" placeholder="Adınız Soyadınız" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="E-posta Adresiniz" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
+                            <input type="email" name="email" placeholder="E-posta Adresiniz" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Telefon Numaranız" style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
+                            <input type="tel" name="telefon" placeholder="Telefon Numaranız">
                         </div>
                         <div class="form-group">
-                            <select required style="color:#333 !important; background:#fff !important;">
+                            <select name="hizmet" required>
                                 <option value="" disabled selected>İlgilendiğiniz Hizmet</option>
-                                <option value="dernek">Dernek Kuruluşu</option>
-                                <option value="vakif">Vakıf Kuruluşu</option>
-                                <option value="genelkurul">Genel Kurul Yönetimi</option>
-                                <option value="mali">Mali Danışmanlık</option>
-                                <option value="proje">Proje ve Fon Geliştirme</option>
-                                <option value="yasal">Yasal Danışmanlık</option>
+                                <option value="Dernek Kuruluşu">Dernek Kuruluşu</option>
+                                <option value="Vakıf Kuruluşu">Vakıf Kuruluşu</option>
+                                <option value="Genel Kurul Yönetimi">Genel Kurul Yönetimi</option>
+                                <option value="Mali Danışmanlık">Mali Danışmanlık</option>
+                                <option value="Proje ve Fon Geliştirme">Proje ve Fon Geliştirme</option>
+                                <option value="Yasal Danışmanlık">Yasal Danışmanlık</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Mesajınız..." rows="5" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;"></textarea>
+                            <textarea name="message" placeholder="Mesajınız..." rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Mesajı Gönder</button>
                     </form>
