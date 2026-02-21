@@ -957,3 +957,165 @@ p, h1, h2, h3, h4, h5, h6, a, li {
     font-weight: 700 !important;
     background: #f0f7ff !important;
 }
+
+
+/* ============================================================
+   HİZMET SAYFALARI — STEP, DERBİS, PROJECT FEATURE
+   (Eleventy build sonrası eksik kalan CSS — Ako Dijital)
+   ============================================================ */
+
+/* ---------- STEP CONTAINER (hizmet-dernek-kurulusu) ---------- */
+.step-container {
+    margin: 30px 0 40px;
+}
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 26px;
+    margin-bottom: 14px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #1a237e;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.step-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+}
+.step-number {
+    min-width: 46px;
+    height: 46px;
+    background: #1a237e;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.step-text h4 {
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+.step-text p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Magnet CTA (dernek kuruluşu sayfası altı) */
+.magnet-cta {
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    color: #ffffff;
+    padding: 44px 40px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 48px;
+}
+.magnet-cta h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.magnet-cta p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    margin-bottom: 26px;
+}
+.magnet-cta .btn-primary {
+    background: #ffffff;
+    color: #1a237e;
+    font-weight: 700;
+    border: none;
+}
+.magnet-cta .btn-primary:hover {
+    background: #e8edf8;
+    transform: translateY(-2px);
+}
+
+/* ---------- DERBİS GRID (hizmet-derbis) ---------- */
+.derbis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+.derbis-card {
+    background: #ffffff;
+    border: 1px solid #e8edf5;
+    border-top: 4px solid #1a237e;
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.derbis-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+.derbis-card i {
+    font-size: 2rem;
+    color: #1a237e;
+    margin-bottom: 14px;
+    display: block;
+}
+.derbis-card h4 {
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+.derbis-card p {
+    color: #666;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin: 0;
+}
+@media (max-width: 640px) {
+    .derbis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- PROJECT FEATURE (hizmet-proje-yazma) ---------- */
+.project-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #1a237e;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-feature:hover {
+    transform: translateX(6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+}
+.project-feature > i {
+    font-size: 1.8rem;
+    color: #1a237e;
+    margin-top: 4px;
+    flex-shrink: 0;
+    min-width: 32px;
+}
+.project-feature > div h4 {
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+.project-feature > div p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 0;
+}
