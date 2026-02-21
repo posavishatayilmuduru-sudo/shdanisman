@@ -91,7 +91,7 @@
         <!-- HİZMETLERİMİZ -->
         <li class="dropdown">
           <a href="#" {% if "hizmet" in page.url %}class="active"{% endif %}>Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-wide">
             <li><a href="/hizmet-dernek-kurulusu/" {% if "dernek-kurulusu" in page.url %}class="active"{% endif %}>Dernek Kuruluşu</a></li>
             <li><a href="/hizmet-derbis/" {% if "derbis" in page.url %}class="active"{% endif %}>DERBİS İşlemleri</a></li>
             <li><a href="/hizmet-vakif-kurulusu/" {% if "vakif" in page.url %}class="active"{% endif %}>Vakıf Kuruluşu</a></li>
@@ -147,36 +147,51 @@
 
                 <!-- SIDEBAR -->
                 <aside class="sidebar">
-                    <!-- HİZMETLERİMİZ -->
+
+                    <!-- HİZMETLERİMİZ LİSTESİ (Her hizmet sayfasında gösterilir) -->
                     <div class="widget">
                         <h4>Hizmetlerimiz</h4>
                         <ul>
-                            <li><a href="/hizmet-dernek-kurulusu/" {% if "dernek-kurulusu" in page.url %}class="active"{% endif %}>Dernek Kuruluşu</a></li>
-                            <li><a href="/hizmet-derbis/" {% if "derbis" in page.url %}class="active"{% endif %}>DERBİS İşlemleri</a></li>
-                            <li><a href="/hizmet-vakif-kurulusu/" {% if "vakif" in page.url %}class="active"{% endif %}>Vakıf Kuruluşu</a></li>
-                            <li><a href="/hizmet-genel-kurul/" {% if "genel-kurul" in page.url %}class="active"{% endif %}>Genel Kurul Yönetimi</a></li>
-                            <li><a href="/hizmet-mali-danismanlik/" {% if "mali-danismanlik" in page.url %}class="active"{% endif %}>Mali Danışmanlık</a></li>
-                            <li><a href="/hizmet-proje-yazma/" {% if "proje-yazma" in page.url %}class="active"{% endif %}>Proje ve Fon Geliştirme</a></li>
-                            <li><a href="/hizmet-yasal-danismanlik/" {% if "yasal-danismanlik" in page.url %}class="active"{% endif %}>Yasal Danışmanlık</a></li>
+                            <li><a href="/hizmet-dernek-kurulusu.html" {% if "dernek-kurulusu" in page.url %}class="active"{% endif %}>Dernek Kuruluşu</a></li>
+                            <li><a href="/hizmet-derbis.html" {% if "derbis" in page.url %}class="active"{% endif %}>DERBİS İşlemleri</a></li>
+                            <li><a href="/hizmet-vakif-kurulusu.html" {% if "vakif" in page.url %}class="active"{% endif %}>Vakıf Kuruluşu</a></li>
+                            <li><a href="/hizmet-genel-kurul.html" {% if "genel-kurul" in page.url %}class="active"{% endif %}>Genel Kurul Yönetimi</a></li>
+                            <li><a href="/hizmet-mali-danismanlik.html" {% if "mali-danismanlik" in page.url %}class="active"{% endif %}>Mali Danışmanlık</a></li>
+                            <li><a href="/hizmet-proje-yazma.html" {% if "proje-yazma" in page.url %}class="active"{% endif %}>Proje ve Fon Geliştirme</a></li>
+                            <li><a href="/hizmet-yasal-danismanlik.html" {% if "yasal-danismanlik" in page.url %}class="active"{% endif %}>Yasal Danışmanlık</a></li>
                         </ul>
                     </div>
 
-                    <!-- SIDEBAR CTA -->
-                    {% if sidebar_cta_text %}
-                    <div class="widget" style="background: #f8f9fa; border-left: 4px solid #00a8e8; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
+                    <!-- SIDEBAR ÖZELLİKLER KUTUSU (front matter'dan: sidebar_title + sidebar_items) -->
+                    {% if sidebar_items %}
+                    <div class="widget" style="background: #f8f9fa; border-left: 4px solid #1a237e; padding: 25px; border-radius: 8px; margin-bottom: 30px;">
                         <h4 style="margin-top: 0; color: #333; margin-bottom: 15px;">
                             <i class="fas fa-star" style="color: #ffc107; margin-right: 8px;"></i>{{ sidebar_title | default("Neden Biz?") }}
                         </h4>
-                        <p>{{ sidebar_cta_text }}</p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            {% for item in sidebar_items %}
+                            <li style="padding: 6px 0; border-bottom: 1px solid #eee; font-size: 14px;">
+                                <i class="fas fa-check-circle" style="color: #25d366; margin-right: 8px;"></i>{{ item }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- SIDEBAR CTA METNİ (front matter'dan: sidebar_cta_text) -->
+                    {% if sidebar_cta_text %}
+                    <div class="widget">
+                        <p style="color: #555; font-size: 14px; line-height: 1.6;">{{ sidebar_cta_text }}</p>
                     </div>
                     {% endif %}
 
                     <!-- TEKLİF ALIN -->
                     <div class="widget">
-                        <h4>Kurumsal Teklif Alın</h4>
-                        <p>Finansal süreçlerinizde uzman desteği almak ve riskleri minimize etmek için teklif isteyin.</p>
-                        <a href="/iletisim/" class="btn btn-secondary" style="width: 100%;">Teklif İsteyin</a>
+                        <h4>Ücretsiz Danışın</h4>
+                        <p>Süreçlerinizi uzman ekibimizle profesyonelce yönetin.</p>
+                        <a href="/iletisim.html" class="btn btn-secondary" style="width: 100%;">Teklif İsteyin</a>
                     </div>
+
                 </aside>
 
             </div>
@@ -243,4 +258,3 @@
       link.addEventListener('click', function(e){
         e.preventDefault();
         var p = this.parentElement;
-    

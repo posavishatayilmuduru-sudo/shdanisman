@@ -3,219 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim | SH Danışmanlık</title>
-    <meta name="description" content="Dernek ve vakıf kurulumu, genel kurul yönetimi ve mali danışmanlık süreçleriniz için SH Danışmanlık ile iletişime geçin.">
     
-    <link rel="stylesheet" href="/css/style.css">
+    <!-- SEO VE KURUMSAL OTORİTE AYARLARI -->
+    <title>İletişim | Profesyonel STK ve Mevzuat Danışmanlığı - SH Danışmanlık</title>
+    <meta name="description" content="Dernek ve vakıf kurulumu, genel kurul yönetimi ve mali danışmanlık süreçleriniz için SH Danışmanlık ile iletişime geçin. Uzman ekibimizle yanınızdayız.">
+    <meta name="keywords" content="stk danışmanlık iletişim, dernek kurulumu telefon, vakıf danışmanlığı adres, istanbul stk danışmanları, dernek tüzüğü destek hattı">
+    <link rel="canonical" href="https://shdanismanlik.netlify.app/iletisim.html">
+
+    <!-- GOOGLE YEREL İŞLETME ŞEMASI (JSON-LD) - Haritalarda ve aramada otorite artırır -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "SH Danışmanlık",
+        "image": "https://shdanismanlik.netlify.app/logo.webp",
+        "telephone": "+90 534 705 42 34",
+        "email": "info@shdanismanlik.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Örnek Mah. No:1",
+          "addressLocality": "İstanbul",
+          "addressCountry": "TR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "41.0082",
+          "longitude": "28.9784"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      }
+    }
+    </script>
+
+    <!-- PERFORMANS: LCP (Banner Görseli Ön Yükleme) -->
+    <link rel="preload" as="image" href="img/banner2.webp" fetchpriority="high">
+
+    <!-- PERFORMANS: Font ve İkonların Engelleyici Olmadan Yüklenmesi -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="/logo.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="logo.webp" type="image/webp">
 
     <style>
-        .contact-grid-wrapper { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 50px; 
-            margin-top: 40px; 
-        }
+        /* KURUMSAL WHATSAPP WIDGET (Sıfır JavaScript - Maksimum Hız - Önceki Sayfalarla Aynı) */
+        .wa-floating-btn { position: fixed; bottom: 25px; left: 25px; z-index: 9999; display: flex; align-items: center; text-decoration: none; transition: all 0.3s ease; }
+        .wa-icon { background-color: #25d366; color: white !important; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .wa-label { background: white; color: #333; padding: 10px 18px; border-radius: 25px; margin-left: 12px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); white-space: nowrap; }
+        @media (max-width: 768px) { .wa-label { display: none; } }
+        .wa-floating-btn:hover { transform: translateY(-3px); }
         
-        .contact-info-box { 
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 40px; 
-            border-radius: 15px; 
-            border-left: 5px solid #1a237e; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        
-        .info-item { 
-            display: flex; 
-            align-items: flex-start; 
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-        }
-        
-        .info-item:hover {
-            transform: translateX(5px);
-        }
-        
-        .info-item i { 
-            font-size: 24px; 
-            color: #1a237e; 
-            margin-right: 20px; 
-            margin-top: 5px;
-            min-width: 30px;
-        }
-        
-        .info-item h4 { 
-            margin: 0 0 8px 0; 
-            font-size: 18px; 
-            color: #1a237e;
-            font-weight: 600;
-        }
-        
-        .info-item p { 
-            margin: 0; 
-            color: #555; 
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        .info-item a {
-            color: #1a237e;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .info-item a:hover {
-            color: #0d47a1;
-            text-decoration: underline;
-        }
-        
-        .contact-form-side h2 {
-            color: #1a237e;
-            margin-bottom: 10px;
-        }
-        
-        .contact-form {
-            background: #ffffff;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-            background-color: #f8f9fa;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #1a237e;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-        }
-        
-        .form-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a237e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 20px;
-            padding-right: 45px;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
-            color: white;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(26, 35, 126, 0.4);
-            background: linear-gradient(135deg, #0d47a1 0%, #1a237e 100%);
-        }
-        
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-        
-        @media (max-width: 992px) { 
-            .contact-grid-wrapper { 
-                grid-template-columns: 1fr; 
-                gap: 40px;
-            }
-            
-            .contact-info-box {
-                padding: 30px;
-            }
-            
-            .contact-form {
-                padding: 25px;
-            }
-        }
-        
-        .map-section {
-            margin-top: 50px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .map-section iframe {
-            display: block;
-        }
+        /* İletişim Sayfasına Özel Form Stil İyileştirmesi */
+        .contact-grid-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 40px; }
+        .contact-info-box { background: #f9f9f9; padding: 40px; border-radius: 10px; border-left: 5px solid #1a237e; }
+        .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .info-item i { font-size: 24px; color: #1a237e; margin-right: 20px; margin-top: 5px; }
+        .info-item h4 { margin: 0 0 5px 0; font-size: 18px; color: #333; }
+        .info-item p { margin: 0; color: #666; font-size: 15px; }
+        @media (max-width: 992px) { .contact-grid-wrapper { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header class="main-header">
   <div class="container header-container">
-    <a href="/" class="logo-container">
-      <img src="/logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" />
+    <a href="index.html" class="logo-container">
+      <img src="logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" />
     </a>
     <nav class="main-nav">
       <button class="nav-close-btn" aria-label="Menüyü kapat"><i class="fas fa-times"></i></button>
       <ul>
-        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="index.html">Ana Sayfa</a></li>
         <li class="dropdown">
           <a href="#">Kurumsal <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/hakkimizda.html">Hakkımızda</a></li>
-            <li><a href="/sss.html">Sıkça Sorulan Sorular</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
+          <a href="hizmetlerimiz.html">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
-            <li><a href="/hizmet-derbis.html">DERBİS İşlemleri</a></li>
-            <li><a href="/hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
-            <li><a href="/hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
-            <li><a href="/hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
-            <li><a href="/hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
-            <li><a href="/hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+            <li><a href="hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+           <li><a href="hizmet-derbis.html">DERBİS İşlemleri</a></li>
+            <li><a href="hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+            <li><a href="hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+            <li><a href="hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+            <li><a href="hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+            <li><a href="hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#">Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/mevzuat.html">Mevzuatlar</a></li>
-            <li><a href="/blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li>
-            <li><a href="/blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
-            <li><a href="/blog.html">Blog & Makaleler</a></li>
+            <li><a href="blog.html">Blog & Makaleler</a></li>
+            <li><a href="mevzuat.html">Mevzuatlar</a></li>
           </ul>
         </li>
-        <li><a href="/referanslar.html">Referanslar</a></li>
-        <li><a href="/iletisim.html" class="active">İletişim</a></li>
+        <li><a href="referanslar.html">Referanslar</a></li>
+        <li><a href="iletisim.html" class="active">İletişim</a></li>
       </ul>
     </nav>
     <button class="nav-open-btn" aria-label="Menüyü aç"><i class="fas fa-bars"></i></button>
@@ -223,17 +123,20 @@
 </header>
 
 <main>
-    <section class="page-header" style="background-image: url('/img/banner2.webp');">
+    <!-- PAGE HEADER -->
+    <section class="page-header" style="background-image: url('img/banner2.webp');">
         <div class="container">
             <h1>İletişim</h1>
             <p>Sivil toplum hedeflerinizi birlikte gerçekleştirelim. Uzmanlarımız size bir adım uzaklıkta.</p>
         </div>
     </section>
 
+    <!-- CONTACT CONTENT AREA -->
     <section class="page-content">
         <div class="container">
             <div class="contact-grid-wrapper">
                 
+                <!-- SOL SÜTUN: İLETİŞİM BİLGİLERİ -->
                 <div class="contact-info">
                     <h2>Bizimle İletişime Geçin</h2>
                     <p style="margin-bottom: 30px;">Dernek ve vakıf süreçlerindeki her türlü sorunuz için bize aşağıdaki kanallardan ulaşabilir veya ofisimizde bizi ziyaret edebilirsiniz.</p>
@@ -243,7 +146,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <h4>Adresimiz</h4>
-                                <p>İstiklal Mahallesi Sütçüimam Caddesi<br>No:144 K:3 D:5<br>Ümraniye, İstanbul</p>
+                                <p>Örnek Mah. No:1, İstanbul, Türkiye</p>
                             </div>
                         </div>
 
@@ -251,7 +154,7 @@
                             <i class="fas fa-phone-alt"></i>
                             <div>
                                 <h4>Telefon</h4>
-                                <p><a href="tel:+905347054234">+90 534 705 42 34</a></p>
+                                <p><a href="tel:+905347054234" style="color: inherit; text-decoration: none;">+90 534 705 42 34</a></p>
                             </div>
                         </div>
 
@@ -259,7 +162,7 @@
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <h4>E-Posta</h4>
-                                <p><a href="mailto:info@stkdanismanlik.com">info@stkdanismanlik.com</a></p>
+                                <p><a href="mailto:info@stkdanismanlik.com" style="color: inherit; text-decoration: none;">info@stkdanismanlik.com</a></p>
                             </div>
                         </div>
 
@@ -273,46 +176,36 @@
                     </div>
                 </div>
 
+                <!-- SAĞ SÜTUN: İLETİŞİM FORMU -->
                 <div class="contact-form-side">
                     <h2>Danışmanlık Talep Formu</h2>
-                    <p style="margin-bottom: 25px; color: #666;">Hizmetlerimiz hakkında detaylı bilgi ve teklif almak için formu doldurun.</p>
+                    <p style="margin-bottom: 20px;">Hizmetlerimiz hakkında detaylı bilgi ve teklif almak için formu doldurun.</p>
                     
-                    <form class="contact-form" name="iletisim" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="iletisim">
-                        
-                        <p style="display: none;">
-                            <label>Bu alanı doldurmayın: <input name="bot-field" /></label>
-                        </p>
-                        
+                    <form class="contact-form" action="#" method="POST">
                         <div class="form-group">
-                            <input type="text" name="ad-soyad" placeholder="Adınız Soyadınız *" required>
+                            <input type="text" placeholder="Adınız Soyadınız" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="E-posta Adresiniz *" required>
+                            <input type="email" placeholder="E-posta Adresiniz" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="telefon" placeholder="Telefon Numaranız">
+                            <input type="tel" placeholder="Telefon Numaranız" style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;">
                         </div>
                         <div class="form-group">
-                            <select name="hizmet" required>
-                                <option value="" disabled selected>İlgilendiğiniz Hizmet *</option>
-                                <option value="Dernek Kuruluşu">Dernek Kuruluşu</option>
-                                <option value="DERBİS İşlemleri">DERBİS İşlemleri</option>
-                                <option value="Vakıf Kuruluşu">Vakıf Kuruluşu</option>
-                                <option value="Genel Kurul Yönetimi">Genel Kurul Yönetimi</option>
-                                <option value="Mali Danışmanlık">Mali Danışmanlık</option>
-                                <option value="Proje ve Fon Geliştirme">Proje ve Fon Geliştirme</option>
-                                <option value="Yasal Danışmanlık">Yasal Danışmanlık</option>
-                                <option value="Diğer">Diğer</option>
+                            <select required style="color:#333 !important; background:#fff !important;">
+                                <option value="" disabled selected>İlgilendiğiniz Hizmet</option>
+                                <option value="dernek">Dernek Kuruluşu</option>
+                                <option value="vakif">Vakıf Kuruluşu</option>
+                                <option value="genelkurul">Genel Kurul Yönetimi</option>
+                                <option value="mali">Mali Danışmanlık</option>
+                                <option value="proje">Proje ve Fon Geliştirme</option>
+                                <option value="yasal">Yasal Danışmanlık</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="mesaj" placeholder="Mesajınız... *" rows="5" required></textarea>
+                            <textarea placeholder="Mesajınız..." rows="5" required style="color:#333 !important; background:#fff !important; -webkit-text-fill-color:#333 !important;"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
-                            Mesajı Gönder
-                        </button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Mesajı Gönder</button>
                     </form>
                 </div>
 
@@ -320,20 +213,17 @@
         </div>
     </section>
 
-    <section class="page-content">
-        <div class="container">
-            <div class="map-section">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.8251!2d29.1219!3d41.0232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac6d4f7b8f7a5%3A0x1234567890abcdef!2zxLBzdGlrbGFsIE1haCwgU8O8dMOnw7xpbWFtIENkLiBObzoxNDQsIMOcbXJhbml5ZS_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
+    <!-- HARİTA BÖLÜMÜ (Lazy Load) -->
+    <section class="map-section" style="line-height: 0;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.435756312521!2d28.97595231538356!3d41.01513707929998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9969a4d1e7b%3A0x4ddc42dcf5796a57!2sİstanbul!5e0!3m2!1str!2str!4v1678886444888!5m2!1str!2str" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </section>
 </main>
 
