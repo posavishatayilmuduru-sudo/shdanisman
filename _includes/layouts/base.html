@@ -31,7 +31,7 @@
     <style>
         /* ===== ACTIVE NAV ===== */
         .main-nav ul li a.active {
-            color: var(--primary-color, #0d6efd) !important;
+            color: var(--primary-color, #1a237e) !important;
             font-weight: 700 !important;
             position: relative;
         }
@@ -42,21 +42,34 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--primary-color, #0d6efd);
+            background: var(--primary-color, #1a237e);
             border-radius: 2px;
         }
         .dropdown-menu li a.active {
-            color: var(--primary-color, #0d6efd) !important;
+            color: var(--primary-color, #1a237e) !important;
             font-weight: 700 !important;
             background: #f0f7ff !important;
         }
-        /* ===== SIDEBAR ACTIVE ===== */
-        .sidebar .widget ul li a.active,
-        .sidebar .widget ul li a.current {
-            color: var(--primary-color, #0d6efd) !important;
+        /* ===== SIDEBAR ACTIVE — MAVİ KUTU ===== */
+        .sidebar .widget ul li a {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            color: #444;
+            text-decoration: none;
+        }
+        .sidebar .widget ul li a:hover {
+            background: #f0f7ff;
+            color: var(--primary-color, #1a237e);
+            padding-left: 20px;
+        }
+        .sidebar .widget ul li a.active {
+            background: var(--primary-color, #1a237e) !important;
+            color: #fff !important;
             font-weight: 700 !important;
-            padding-left: 8px;
-            border-left: 3px solid var(--primary-color, #0d6efd);
+            border-left: none !important;
+            padding-left: 15px !important;
         }
         /* ===== WHATSAPP — SAĞ TARAF ===== */
         .wa-floating-btn { position: fixed; bottom: 25px; right: 25px; left: auto !important; z-index: 9999; display: flex; align-items: center; flex-direction: row-reverse; text-decoration: none; transition: all 0.3s ease; }
@@ -80,11 +93,11 @@
         <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Ana Sayfa</a></li>
 
         <!-- KURUMSAL -->
-        <li class="dropdown">
-          <a href="#" {% if "hakkimizda" in page.url or "sss" in page.url %}class="active"{% endif %}>Kurumsal <i class="fas fa-chevron-down"></i></a>
+        <li class="dropdown{% if "hakkimizda" in page.url or "sss" in page.url %} active-parent{% endif %}">
+          <a href="#"{% if "hakkimizda" in page.url or "sss" in page.url %} class="active"{% endif %}>Kurumsal <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/hakkimizda/" {% if "hakkimizda" in page.url %}class="active"{% endif %}>Hakkımızda</a></li>
-            <li><a href="/sss/" {% if "sss" in page.url %}class="active"{% endif %}>Sıkça Sorulan Sorular</a></li>
+            <li><a href="/hakkimizda.html"{% if "hakkimizda" in page.url %} class="active"{% endif %}>Hakkımızda</a></li>
+            <li><a href="/sss.html"{% if "sss" in page.url %} class="active"{% endif %}>Sıkça Sorulan Sorular</a></li>
           </ul>
         </li>
 
@@ -103,21 +116,21 @@
         </li>
 
         <!-- BİLGİ BANKASI -->
-        <li class="dropdown">
-          <a href="#" {% if "mevzuat" in page.url or "blog" in page.url or "basari" in page.url %}class="active"{% endif %}>Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
+        <li class="dropdown{% if "mevzuat" in page.url or "blog" in page.url or "basari" in page.url %} active-parent{% endif %}">
+          <a href="#"{% if "mevzuat" in page.url or "blog" in page.url or "basari" in page.url %} class="active"{% endif %}>Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="/mevzuat/" {% if page.url == "/mevzuat/" %}class="active"{% endif %}>Mevzuatlar</a></li>
-            <li><a href="/blog-dernek-yonetici-sorumluluklari/" {% if "yonetici" in page.url %}class="active"{% endif %}>Yönetici Sorumlulukları</a></li>
-            <li><a href="/blog-stk-iktisadi-isletme-avantajlari/" {% if "iktisadi" in page.url %}class="active"{% endif %}>İktisadi İşletme Avantajları</a></li>
-            <li><a href="/blog/" {% if page.url == "/blog/" %}class="active"{% endif %}>Blog & Makaleler</a></li>
+            <li><a href="/mevzuat.html"{% if "/mevzuat" in page.url %} class="active"{% endif %}>Mevzuatlar</a></li>
+            <li><a href="/blog-dernek-yonetici-sorumluluklari.html"{% if "yonetici" in page.url %} class="active"{% endif %}>Yönetici Sorumlulukları</a></li>
+            <li><a href="/blog-stk-iktisadi-isletme-avantajlari.html"{% if "iktisadi" in page.url %} class="active"{% endif %}>İktisadi İşletme Avantajları</a></li>
+            <li><a href="/blog.html"{% if page.url == "/blog.html" or page.url == "/blog/" %} class="active"{% endif %}>Blog & Makaleler</a></li>
           </ul>
         </li>
 
         <!-- REFERANSLAR -->
-        <li><a href="/referanslar/" {% if "referanslar" in page.url %}class="active"{% endif %}>Referanslar</a></li>
+        <li><a href="/referanslar.html"{% if "referanslar" in page.url %} class="active"{% endif %}>Referanslar</a></li>
 
         <!-- İLETİŞİM -->
-        <li><a href="/iletisim/" {% if "iletisim" in page.url %}class="active"{% endif %}>İletişim</a></li>
+        <li><a href="/iletisim.html"{% if "iletisim" in page.url %} class="active"{% endif %}>İletişim</a></li>
       </ul>
     </nav>
     <button class="nav-open-btn" aria-label="Menüyü aç"><i class="fas fa-bars"></i></button>
@@ -145,22 +158,63 @@
                     {{ content | safe }}
                 </div>
 
-                <!-- SIDEBAR -->
+                <!-- SIDEBAR — URL'e göre dinamik bölüm -->
                 <aside class="sidebar">
+
+                    {% if "hakkimizda" in page.url or "sss" in page.url %}
+                    <!-- KURUMSAL SIDEBAR -->
                     <div class="widget">
-                        <h4>Bilgi Bankası</h4>
+                        <h4>Kurumsal</h4>
                         <ul>
-                            <li><a href="/hizmet-dernek-kurulusu.html" {% if "dernek-kurulusu" in page.url %}class="active"{% endif %}>Dernek Kuruluşu</a></li>
-                            <li><a href="/hizmet-derbis.html" {% if "derbis" in page.url %}class="active"{% endif %}>DERBİS İşlemleri</a></li>
-                            <li><a href="/hizmet-vakif-kurulusu.html" {% if "vakif" in page.url %}class="active"{% endif %}>Vakıf Kuruluşu</a></li>
-                            <li><a href="/hizmet-genel-kurul.html" {% if "genel-kurul" in page.url %}class="active"{% endif %}>Genel Kurul Yönetimi</a></li>
-                            <li><a href="/hizmet-mali-danismanlik.html" {% if "mali-danismanlik" in page.url %}class="active"{% endif %}>Mali Danışmanlık</a></li>
-                            <li><a href="/hizmet-proje-yazma.html" {% if "proje-yazma" in page.url %}class="active"{% endif %}>Proje ve Fon Geliştirme</a></li>
-                            <li><a href="/hizmet-yasal-danismanlik.html" {% if "yasal-danismanlik" in page.url %}class="active"{% endif %}>Yasal Danışmanlık</a></li>
+                            <li><a href="/hakkimizda.html"{% if "hakkimizda" in page.url %} class="active"{% endif %}>Hakkımızda</a></li>
+                            <li><a href="/sss.html"{% if "sss" in page.url %} class="active"{% endif %}>Sıkça Sorulan Sorular</a></li>
                         </ul>
                     </div>
 
-                    <!-- TEKLİF ALIN -->
+                    {% elif "/hizmet" in page.url %}
+                    <!-- HİZMETLER SIDEBAR -->
+                    <div class="widget">
+                        <h4>Hizmetlerimiz</h4>
+                        <ul>
+                            <li><a href="/hizmet-dernek-kurulusu.html"{% if "/hizmet-dernek-kurulusu" in page.url %} class="active"{% endif %}>Dernek Kuruluşu</a></li>
+                            <li><a href="/hizmet-derbis.html"{% if "/hizmet-derbis" in page.url %} class="active"{% endif %}>DERBİS İşlemleri</a></li>
+                            <li><a href="/hizmet-vakif-kurulusu.html"{% if "/hizmet-vakif-kurulusu" in page.url %} class="active"{% endif %}>Vakıf Kuruluşu</a></li>
+                            <li><a href="/hizmet-genel-kurul.html"{% if "/hizmet-genel-kurul" in page.url %} class="active"{% endif %}>Genel Kurul Yönetimi</a></li>
+                            <li><a href="/hizmet-mali-danismanlik.html"{% if "/hizmet-mali-danismanlik" in page.url %} class="active"{% endif %}>Mali Danışmanlık</a></li>
+                            <li><a href="/hizmet-proje-yazma.html"{% if "/hizmet-proje-yazma" in page.url %} class="active"{% endif %}>Proje ve Fon Geliştirme</a></li>
+                            <li><a href="/hizmet-yasal-danismanlik.html"{% if "/hizmet-yasal-danismanlik" in page.url %} class="active"{% endif %}>Yasal Danışmanlık</a></li>
+                        </ul>
+                    </div>
+
+                    {% elif "mevzuat" in page.url or "blog" in page.url or "basari" in page.url %}
+                    <!-- BİLGİ BANKASI SIDEBAR -->
+                    <div class="widget">
+                        <h4>Bilgi Bankası</h4>
+                        <ul>
+                            <li><a href="/mevzuat.html"{% if "/mevzuat" in page.url %} class="active"{% endif %}>Mevzuatlar</a></li>
+                            <li><a href="/blog-dernek-yonetici-sorumluluklari.html"{% if "yonetici" in page.url %} class="active"{% endif %}>Yönetici Sorumlulukları</a></li>
+                            <li><a href="/blog-stk-iktisadi-isletme-avantajlari.html"{% if "iktisadi" in page.url %} class="active"{% endif %}>İktisadi İşletme Avantajları</a></li>
+                            <li><a href="/blog.html"{% if page.url == "/blog.html" or page.url == "/blog/" %} class="active"{% endif %}>Blog & Makaleler</a></li>
+                        </ul>
+                    </div>
+
+                    {% else %}
+                    <!-- VARSAYILAN SIDEBAR (diğer sayfalar) -->
+                    <div class="widget">
+                        <h4>Hizmetlerimiz</h4>
+                        <ul>
+                            <li><a href="/hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+                            <li><a href="/hizmet-derbis.html">DERBİS İşlemleri</a></li>
+                            <li><a href="/hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+                            <li><a href="/hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+                            <li><a href="/hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+                            <li><a href="/hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+                            <li><a href="/hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    <!-- TEKLİF ALIN (her sayfada) -->
                     <div class="widget">
                         <h4>Ücretsiz Danışın</h4>
                         <p>Süreçlerinizi uzman ekibimizle profesyonelce yönetin.</p>
@@ -184,17 +238,17 @@
             <div class="footer-col">
                 <p><strong>Hızlı Menü</strong></p>
                 <ul>
-                    <li><a href="/hakkimizda/">Hakkımızda</a></li>
-                    <li><a href="/referanslar/">Referanslar</a></li>
-                    <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/iletisim/">İletişim</a></li>
+                    <li><a href="/hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="/referanslar.html">Referanslar</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/iletisim.html">İletişim</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <p><strong>İletişim</strong></p>
                 <p><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</p>
                 <p><i class="fas fa-phone"></i> +90 534 705 42 34</p>
-                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection#127b7c747d52617a76737c7b617f737c7e7b793c717d7f" style="color: inherit;"><span class="__cf_email__" data-cfemail="97fef9f1f8d7e4fff3f6f9fee4faf6f9fbfefcb9f4f8fa">[email&#160;protected]</span></a></p>
+                <p><i class="fas fa-envelope"></i> info@shdanismanlik.com</p>
             </div>
             <div class="footer-col">
                 <p><strong>Takip Edin</strong></p>
@@ -218,7 +272,7 @@
 </a>
 
 <!-- Mobile Nav Script -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var navOpenBtn = document.querySelector('.nav-open-btn');
   var navCloseBtn = document.querySelector('.nav-close-btn');
@@ -231,5 +285,16 @@
     });
     document.querySelectorAll('.main-nav .dropdown > a').forEach(function(link){
       link.addEventListener('click', function(e){
-        e.preventDefault();
-        var p = this.parentElement;
+        if(window.innerWidth <= 992){
+          e.preventDefault();
+          var p = this.parentElement;
+          p.classList.toggle('open');
+        }
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
