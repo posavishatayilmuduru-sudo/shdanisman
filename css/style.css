@@ -908,3 +908,13 @@ p, h1, h2, h3, h4, h5, h6, a, li {
     display: block !important;
     order: unset !important;
 }
+/* WHATSAPP SAĞA TAŞI */
+.wa-floating-btn {
+    left: auto !important;
+    right: 25px !important;
+    flex-direction: row-reverse !important;
+}
+.wa-floating-btn .wa-label {
+    margin-left: 0 !important;
+    margin-right: 12px !important;
+}
