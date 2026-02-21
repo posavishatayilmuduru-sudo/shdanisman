@@ -5,218 +5,337 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SH Danışmanlık | Yönetim Paneli</title>
   <link rel="icon" type="image/webp" href="/logo.webp" />
+
   <style>
-    /* ── LOADING SCREEN ─────────────────────────── */
-    #cms-loading {
-      position: fixed; inset: 0;
-      background: #0d1f35;
+    /* ═══════════════════════════════════════════
+       SH DANIŞMANLIK — PREMIUM CMS THEME
+       ═══════════════════════════════════════════ */
+    
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --sh-primary: #0d2137;
+      --sh-accent: #0d6efd;
+      --sh-accent-hover: #0b5ed7;
+      --sh-sidebar-bg: #0a1929;
+      --sh-sidebar-hover: #132f4c;
+      --sh-header-bg: linear-gradient(135deg, #0d2137 0%, #1a3a5c 50%, #0d2137 100%);
+      --sh-surface: #f8fafc;
+      --sh-card: #ffffff;
+      --sh-border: #e2e8f0;
+      --sh-text: #1e293b;
+      --sh-text-muted: #64748b;
+      --sh-success: #10b981;
+      --sh-warning: #f59e0b;
+      --sh-radius: 12px;
+      --sh-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+      --sh-shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ─── GLOBAL RESET ─── */
+    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important; }
+    body { background: var(--sh-surface) !important; }
+
+    /* ─── LOADING SCREEN ─── */
+    #sh-loader {
+      position: fixed; inset: 0; z-index: 99999;
+      background: var(--sh-primary);
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.5s ease;
     }
-    #cms-loading img { width: 120px; margin-bottom: 24px; }
-    #cms-loading p {
-      color: #7ca8d0; font-family: 'Segoe UI', sans-serif;
-      font-size: 14px; margin: 0;
-      animation: pulse 1.5s ease-in-out infinite;
+    #sh-loader.hide { opacity: 0; pointer-events: none; }
+    #sh-loader img { width: 80px; margin-bottom: 24px; filter: brightness(0) invert(1); }
+    #sh-loader h2 { color: #fff; font-size: 20px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.3px; }
+    #sh-loader p { color: #94a3b8; font-size: 14px; margin: 0 0 24px; }
+    .sh-spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: var(--sh-accent);
+      border-radius: 50%;
+      animation: sh-spin 0.8s linear infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
-    #cms-loading.hidden { opacity: 0; pointer-events: none; }
+    @keyframes sh-spin { to { transform: rotate(360deg); } }
 
-    /* ── GLOBAL CMS OVERRIDES ───────────────────── */
-
-    /* Header / Top Bar */
-    [class*="AppHeader"],
-    [class*="app-header"] {
-      background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 100%) !important;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.35) !important;
+    /* ─── TOP HEADER BAR ─── */
+    header[class*="AppHeader"],
+    div[class*="AppHeader"] {
+      background: var(--sh-header-bg) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2) !important;
+      min-height: 56px !important;
     }
-    [class*="AppHeader"] a,
-    [class*="AppHeader"] button,
-    [class*="app-header"] a { color: #e8f4ff !important; }
-
-    /* Sidebar Navigation */
-    [class*="SidebarNavList"],
-    [class*="Collection"] nav,
-    aside[class*="nav"] {
-      background: #f7f9fc !important;
-      border-right: 1px solid #dde5ef !important;
-    }
-    [class*="SidebarNavList"] a,
-    [class*="NavLink"] {
-      color: #1a3a5c !important;
+    header[class*="AppHeader"] a,
+    header[class*="AppHeader"] span,
+    div[class*="AppHeader"] a,
+    div[class*="AppHeader"] span {
+      color: #e2e8f0 !important;
       font-weight: 500 !important;
-      border-radius: 6px !important;
-      transition: background 0.15s !important;
+      font-size: 14px !important;
     }
-    [class*="NavLink"]:hover,
-    [class*="NavLink"][class*="active"] {
-      background: #e0ecfb !important;
-      color: #0a2540 !important;
+    header[class*="AppHeader"] a:hover,
+    div[class*="AppHeader"] a:hover {
+      color: #fff !important;
+      background: rgba(255,255,255,0.08) !important;
+      border-radius: 6px !important;
+    }
+    /* Logo in header */
+    header[class*="AppHeader"] img,
+    div[class*="AppHeader"] img {
+      height: 32px !important;
+      filter: brightness(0) invert(1) !important;
     }
 
-    /* Collection List Items */
-    [class*="EntryCard"],
-    [class*="ListCard"] {
+    /* ─── SIDEBAR NAVIGATION ─── */
+    div[class*="Sidebar"],
+    aside[class*="Sidebar"],
+    nav[class*="Sidebar"] {
+      background: var(--sh-sidebar-bg) !important;
+      border-right: 1px solid rgba(255,255,255,0.06) !important;
+      box-shadow: 2px 0 16px rgba(0,0,0,0.15) !important;
+    }
+    div[class*="Sidebar"] a,
+    div[class*="Sidebar"] span,
+    nav[class*="Sidebar"] a,
+    nav[class*="Sidebar"] span {
+      color: #94a3b8 !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
       border-radius: 8px !important;
-      border: 1px solid #e0e8f0 !important;
-      transition: box-shadow 0.15s, transform 0.15s !important;
+      transition: all 0.2s ease !important;
     }
-    [class*="EntryCard"]:hover,
-    [class*="ListCard"]:hover {
-      box-shadow: 0 4px 16px rgba(26,58,92,0.12) !important;
-      transform: translateY(-1px) !important;
+    div[class*="Sidebar"] a:hover,
+    nav[class*="Sidebar"] a:hover {
+      color: #fff !important;
+      background: var(--sh-sidebar-hover) !important;
     }
-
-    /* Primary Buttons */
-    [class*="PublishButton"],
-    button[class*="primary"],
-    [class*="Button"][class*="primary"] {
-      background: #1a3a5c !important;
-      border-color: #1a3a5c !important;
-      border-radius: 6px !important;
+    /* Active sidebar item */
+    div[class*="Sidebar"] a[class*="active"],
+    div[class*="Sidebar"] a[href][class*="selected"],
+    nav[class*="Sidebar"] a[class*="active"],
+    [class*="SidebarNavLink"][class*="active"] {
+      color: #fff !important;
+      background: var(--sh-accent) !important;
+      box-shadow: 0 2px 8px rgba(13,110,253,0.3) !important;
     }
-    [class*="PublishButton"]:hover,
-    button[class*="primary"]:hover {
-      background: #0a2540 !important;
-    }
-
-    /* Toolbar (editor markdown toolbar) */
-    [class*="ToolbarButton"] {
-      color: #1a3a5c !important;
-      border-radius: 4px !important;
-    }
-    [class*="ToolbarButton"]:hover { background: #dde8f7 !important; }
-
-    /* Field Labels */
-    [class*="ControlLabel"],
-    label[class*="label"] {
-      color: #0a2540 !important;
-      font-weight: 600 !important;
-      font-size: 12px !important;
+    /* Sidebar section headers */
+    div[class*="Sidebar"] h2,
+    nav[class*="Sidebar"] h2 {
+      color: #475569 !important;
+      font-size: 11px !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.5px !important;
+      letter-spacing: 1.5px !important;
+      font-weight: 700 !important;
     }
 
-    /* Input / Textarea fields */
-    input[type="text"],
-    input[type="number"],
-    textarea,
-    [class*="StringInput"],
-    [class*="TextInput"] {
-      border-color: #c4d4e8 !important;
-      border-radius: 6px !important;
-      transition: border-color 0.15s, box-shadow 0.15s !important;
-    }
-    input[type="text"]:focus,
-    textarea:focus {
-      border-color: #1a3a5c !important;
-      box-shadow: 0 0 0 3px rgba(26,58,92,0.12) !important;
+    /* ─── MAIN CONTENT AREA ─── */
+    main, [class*="AppMain"] {
+      background: var(--sh-surface) !important;
     }
 
-    /* Hint text */
-    [class*="ControlHint"],
-    [class*="hint"] {
-      color: #6b8aaa !important;
-      font-style: italic !important;
-    }
-
-    /* Select dropdowns */
-    select, [class*="SelectControl"] {
-      border-color: #c4d4e8 !important;
-      border-radius: 6px !important;
-    }
-
-    /* Boolean toggle */
-    [class*="Toggle"] input:checked + span {
-      background: #1a3a5c !important;
-    }
-
-    /* Image upload area */
-    [class*="ImageControl"],
-    [class*="FileControl"] {
-      border: 2px dashed #c4d4e8 !important;
-      border-radius: 8px !important;
-      background: #f7f9fc !important;
-    }
-
-    /* Markdown editor */
-    [class*="MarkdownEditor"],
-    .cms-editor-markdown {
-      border: 1px solid #c4d4e8 !important;
-      border-radius: 8px !important;
+    /* ─── COLLECTION LIST / CARDS ─── */
+    div[class*="ListCard"],
+    div[class*="EntryListing"],
+    [class*="ObjectWidgetTopBar"],
+    table[class*="EntryListing"] {
+      background: var(--sh-card) !important;
+      border: 1px solid var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      box-shadow: var(--sh-shadow) !important;
       overflow: hidden !important;
     }
-
-    /* Category / Select options */
-    [class*="SelectOption"]:hover {
-      background: #e0ecfb !important;
+    /* Entry rows */
+    [class*="ListCardLink"],
+    [class*="EntryListingRow"] {
+      border-bottom: 1px solid #f1f5f9 !important;
+      transition: all 0.15s ease !important;
+      padding: 14px 20px !important;
     }
-    [class*="SelectOption"][class*="selected"] {
-      background: #1a3a5c !important;
-      color: white !important;
-    }
-
-    /* Preview pane toggle */
-    [class*="PreviewToggle"] {
-      background: #e0ecfb !important;
-      color: #1a3a5c !important;
+    [class*="ListCardLink"]:hover,
+    [class*="EntryListingRow"]:hover {
+      background: #f0f7ff !important;
+      transform: translateX(2px) !important;
     }
 
-    /* Breadcrumb */
-    [class*="Breadcrumb"],
-    [class*="breadcrumb"] { color: #6b8aaa !important; }
-
-    /* Status badge (Published / Draft) */
-    [class*="StatusBadge"][class*="published"],
-    [class*="PublishedBadge"] {
-      background: #d1fae5 !important;
-      color: #065f46 !important;
-      border-radius: 4px !important;
-    }
-    [class*="StatusBadge"][class*="draft"],
-    [class*="DraftBadge"] {
-      background: #fef3c7 !important;
-      color: #92400e !important;
-      border-radius: 4px !important;
+    /* ─── HEADINGS ─── */
+    h1[class*="Heading"],
+    h2[class*="ViewHeader"] {
+      color: var(--sh-text) !important;
+      font-weight: 700 !important;
+      font-size: 24px !important;
+      letter-spacing: -0.5px !important;
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #f0f4f8; }
-    ::-webkit-scrollbar-thumb { background: #b0c4d8; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #1a3a5c; }
+    /* ─── BUTTONS ─── */
+    button[class*="ToolbarButton"],
+    [class*="PublishButton"],
+    a[class*="ToolbarButton"] {
+      background: var(--sh-accent) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      padding: 8px 20px !important;
+      box-shadow: 0 2px 8px rgba(13,110,253,0.25) !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+    }
+    button[class*="ToolbarButton"]:hover,
+    [class*="PublishButton"]:hover {
+      background: var(--sh-accent-hover) !important;
+      box-shadow: 0 4px 16px rgba(13,110,253,0.35) !important;
+      transform: translateY(-1px) !important;
+    }
+    /* Delete button */
+    button[class*="DeleteButton"] {
+      background: #ef4444 !important;
+      box-shadow: 0 2px 8px rgba(239,68,68,0.25) !important;
+    }
+    button[class*="DeleteButton"]:hover {
+      background: #dc2626 !important;
+    }
+
+    /* ─── FORM INPUTS ─── */
+    input[class*="Input"],
+    textarea[class*="Textarea"],
+    select[class*="Select"],
+    [class*="ControlInput"],
+    [class*="TextField"] input,
+    [class*="TextControl"] input,
+    [class*="TextControl"] textarea {
+      border: 2px solid var(--sh-border) !important;
+      border-radius: 8px !important;
+      padding: 10px 14px !important;
+      font-size: 14px !important;
+      transition: all 0.2s ease !important;
+      background: #fff !important;
+    }
+    input:focus, textarea:focus, select:focus,
+    [class*="TextField"] input:focus {
+      border-color: var(--sh-accent) !important;
+      box-shadow: 0 0 0 3px rgba(13,110,253,0.12) !important;
+      outline: none !important;
+    }
+
+    /* ─── FIELD LABELS ─── */
+    label[class*="ControlLabel"],
+    [class*="FieldLabel"],
+    label[for] {
+      color: var(--sh-text) !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      margin-bottom: 6px !important;
+    }
+    /* Field hints */
+    [class*="ControlHint"],
+    span[class*="hint"] {
+      color: var(--sh-text-muted) !important;
+      font-size: 12px !important;
+      font-style: normal !important;
+    }
+
+    /* ─── MARKDOWN EDITOR ─── */
+    [class*="MarkdownWidget"],
+    [class*="EditorControl"] {
+      border: 2px solid var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      overflow: hidden !important;
+    }
+    [class*="EditorToolbar"],
+    [class*="Toolbar"][class*="markdown"] {
+      background: #f8fafc !important;
+      border-bottom: 1px solid var(--sh-border) !important;
+      padding: 8px !important;
+    }
+    [class*="EditorToolbar"] button {
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+    }
+    [class*="EditorToolbar"] button:hover {
+      background: #e2e8f0 !important;
+    }
+
+    /* ─── DROPDOWN / SELECT ─── */
+    [class*="SelectWidget"] select {
+      appearance: none !important;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E") no-repeat right 12px center !important;
+      padding-right: 36px !important;
+    }
+
+    /* ─── IMAGE WIDGET ─── */
+    [class*="ImageWidget"],
+    [class*="FileWidget"] {
+      border: 2px dashed var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      background: #fafbfc !important;
+      transition: all 0.2s ease !important;
+    }
+    [class*="ImageWidget"]:hover,
+    [class*="FileWidget"]:hover {
+      border-color: var(--sh-accent) !important;
+      background: #f0f7ff !important;
+    }
+
+    /* ─── PREVIEW PANE ─── */
+    [class*="PreviewPane"] {
+      background: #fff !important;
+      border-left: 2px solid var(--sh-border) !important;
+    }
+
+    /* ─── NOTIFICATIONS / TOASTS ─── */
+    [class*="Notification"][class*="success"],
+    [class*="Toast"][class*="success"] {
+      background: var(--sh-success) !important;
+      border-radius: 8px !important;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* ─── SEARCH BOX ─── */
+    [class*="SearchInput"],
+    input[type="search"] {
+      background: rgba(255,255,255,0.06) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      color: #fff !important;
+      border-radius: 8px !important;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      div[class*="Sidebar"] { width: 240px !important; }
+      h1[class*="Heading"] { font-size: 18px !important; }
+    }
   </style>
-</head>
-<body>
 
-  <!-- Loading screen -->
-  <div id="cms-loading">
-    <img src="/logo.webp" alt="SH Danışmanlık" onerror="this.style.display='none'" />
-    <p>Yönetim Paneli Yükleniyor…</p>
-  </div>
-
-  <!-- Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@%5E3.0.0/dist/decap-cms.js"></script>
 
   <script>
-    // Hide loading screen once CMS mounts
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        var el = document.getElementById('cms-loading');
-        if (el) {
-          el.classList.add('hidden');
-          setTimeout(function () { el.remove(); }, 500);
-        }
-      }, 1800);
+    // Loading screen
+    document.addEventListener('DOMContentLoaded', function() {
+      var loader = document.getElementById('sh-loader');
+      if (loader) {
+        setTimeout(function() {
+          loader.classList.add('hide');
+          setTimeout(function() { loader.remove(); }, 600);
+        }, 1500);
+      }
     });
-
-    // Türkçe tarih formatı için yardımcı
-    if (window.CMS) {
-      CMS.registerPreviewStyle('/admin/preview.css');
-    }
   </script>
-
+</head>
+<body>
+  <!-- Premium Loading Screen -->
+  <div id="sh-loader">
+    <img src="/logo.webp" alt="SH Danışmanlık" />
+    <h2>SH Danışmanlık</h2>
+    <p>Yönetim Paneli Yükleniyor...</p>
+    <div class="sh-spinner"></div>
+  </div>
 </body>
 </html>

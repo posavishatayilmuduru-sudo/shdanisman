@@ -265,37 +265,54 @@ permalink: "/iletisim.html"
                     <h2>Danışmanlık Talep Formu</h2>
                     <p style="margin-bottom: 25px; color: #666;">Hizmetlerimiz hakkında detaylı bilgi ve teklif almak için formu doldurun.</p>
                     
-                    <form class="contact-form" action="#" method="POST">
-                        <div class="form-group">
-                            <input type="text" placeholder="Adınız Soyadınız *" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="E-posta Adresiniz *" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Telefon Numaranız">
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>İlgilendiğiniz Hizmet *</option>
-                                <option value="dernek">Dernek Kuruluşu</option>
-                                <option value="derbis">DERBİS İşlemleri</option>
-                                <option value="vakif">Vakıf Kuruluşu</option>
-                                <option value="genelkurul">Genel Kurul Yönetimi</option>
-                                <option value="mali">Mali Danışmanlık</option>
-                                <option value="proje">Proje ve Fon Geliştirme</option>
-                                <option value="yasal">Yasal Danışmanlık</option>
-                                <option value="diger">Diğer</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Mesajınız... *" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
-                            Mesajı Gönder
-                        </button>
-                    </form>
+                    <!-- SADECE BU FORM KODUNU ESKİ FORM İLE DEĞİŞTİR -->
+<!-- <form class="contact-form" action="#" method="POST"> BUNU SİL -->
+<!-- </form> KAPATMA ETİKETİNE KADAR HEPSİNİ DEĞİŞTİR -->
+
+<form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+    
+    <!-- Web3Forms Access Key - Değiştirme -->
+    <input type="hidden" name="access_key" value="4fe328a0-e03e-4479-85cf-b2b076f4335b">
+    
+    <!-- Form başarılı gönderilince bu sayfaya yönlendirir -->
+    <input type="hidden" name="redirect" value="https://stkdanisman.netlify.app/tesekkurler.html">
+    
+    <!-- Mail konusu -->
+    <input type="hidden" name="subject" value="STK Danışmanlık - Yeni İletişim Formu">
+    
+    <!-- Bot koruması -->
+    <input type="checkbox" name="botcheck" style="display:none;">
+
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Adınız Soyadınız *" required>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="E-posta Adresiniz *" required>
+    </div>
+    <div class="form-group">
+        <input type="tel" name="telefon" placeholder="Telefon Numaranız">
+    </div>
+    <div class="form-group">
+        <select name="hizmet" required>
+            <option value="" disabled selected>İlgilendiğiniz Hizmet *</option>
+            <option value="dernek">Dernek Kuruluşu</option>
+            <option value="derbis">DERBİS İşlemleri</option>
+            <option value="vakif">Vakıf Kuruluşu</option>
+            <option value="genelkurul">Genel Kurul Yönetimi</option>
+            <option value="mali">Mali Danışmanlık</option>
+            <option value="proje">Proje ve Fon Geliştirme</option>
+            <option value="yasal">Yasal Danışmanlık</option>
+            <option value="diger">Diğer</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <textarea name="message" placeholder="Mesajınız... *" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%;">
+        <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+        Mesajı Gönder
+    </button>
+</form>
                 </div>
 
             </div>
