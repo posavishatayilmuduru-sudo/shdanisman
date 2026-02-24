@@ -61,6 +61,65 @@ permalink: "/iletisim.html"
     .info-item h4 { margin: 0 0 5px 0; font-size: 18px; color: #333; }
     .info-item p { margin: 0; color: #666; font-size: 15px; }
     @media (max-width: 992px) { .contact-grid-wrapper { grid-template-columns: 1fr; } }
+
+    /* Form stili — profesyonel */
+    .contact-form { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .contact-form-side h2 { color: #1a237e; margin-bottom: 8px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 13px 16px;
+        border: 1.5px solid #dde3f0;
+        border-radius: 8px;
+        font-size: 15px;
+        font-family: 'Poppins', sans-serif;
+        color: #333 !important;
+        background: #fafbff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #aaa !important; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #1a237e;
+        box-shadow: 0 0 0 3px rgba(26,35,126,0.08);
+        background: #fff;
+    }
+    .form-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%231a237e' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 14px;
+        background-color: #fafbff;
+        padding-right: 40px;
+        cursor: pointer;
+        color: #333 !important;
+    }
+    .form-group select option { color: #333; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .contact-form .btn-primary {
+        background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+        color: #fff !important;
+        border: none;
+        border-radius: 8px;
+        padding: 14px 30px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 14px rgba(26,35,126,0.25);
+    }
+    .contact-form .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(26,35,126,0.35);
+    }
 </style>
 
 <section class="page-content">
@@ -77,7 +136,7 @@ permalink: "/iletisim.html"
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Adresimiz</h4>
-                            <p>Örnek Mah. No:1, İstanbul, Türkiye</p>
+                            <p>İstiklal Mahallesi Sütçüimam Caddesi<br>No:144 K:3 D:5<br>Ümraniye, İstanbul</p>
                         </div>
                     </div>
 
@@ -169,5 +228,4 @@ permalink: "/iletisim.html"
 
 <a href="https://wa.me/905347054234" class="wa-floating-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
     <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
-    <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
 </a>

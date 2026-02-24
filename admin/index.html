@@ -7,6 +7,10 @@
   <link rel="icon" type="image/webp" href="/logo.webp" />
 
   <style>
+    /* ═══════════════════════════════════════════
+       SH DANIŞMANLIK — PREMIUM CMS THEME
+       ═══════════════════════════════════════════ */
+    
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
     :root {
@@ -28,9 +32,11 @@
       --sh-shadow-lg: 0 4px 24px rgba(0,0,0,0.12);
     }
 
+    /* ─── GLOBAL RESET ─── */
     * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important; }
     body { background: var(--sh-surface) !important; }
 
+    /* ─── LOADING SCREEN ─── */
     #sh-loader {
       position: fixed; inset: 0; z-index: 99999;
       background: var(--sh-primary);
@@ -51,167 +57,287 @@
     }
     @keyframes sh-spin { to { transform: rotate(360deg); } }
 
-    header[class*="AppHeader"], div[class*="AppHeader"] {
+    /* ─── TOP HEADER BAR ─── */
+    header[class*="AppHeader"],
+    div[class*="AppHeader"] {
       background: var(--sh-header-bg) !important;
       border-bottom: 1px solid rgba(255,255,255,0.08) !important;
       box-shadow: 0 2px 16px rgba(0,0,0,0.2) !important;
       min-height: 56px !important;
     }
-    header[class*="AppHeader"] a, header[class*="AppHeader"] span,
-    div[class*="AppHeader"] a, div[class*="AppHeader"] span {
-      color: #e2e8f0 !important; font-weight: 500 !important; font-size: 14px !important;
+    header[class*="AppHeader"] a,
+    header[class*="AppHeader"] span,
+    div[class*="AppHeader"] a,
+    div[class*="AppHeader"] span {
+      color: #e2e8f0 !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
     }
-    header[class*="AppHeader"] a:hover, div[class*="AppHeader"] a:hover {
-      color: #fff !important; background: rgba(255,255,255,0.08) !important; border-radius: 6px !important;
+    header[class*="AppHeader"] a:hover,
+    div[class*="AppHeader"] a:hover {
+      color: #fff !important;
+      background: rgba(255,255,255,0.08) !important;
+      border-radius: 6px !important;
     }
-    header[class*="AppHeader"] img, div[class*="AppHeader"] img {
-      height: 32px !important; filter: brightness(0) invert(1) !important;
+    /* Logo in header */
+    header[class*="AppHeader"] img,
+    div[class*="AppHeader"] img {
+      height: 32px !important;
+      filter: brightness(0) invert(1) !important;
     }
 
-    div[class*="Sidebar"], aside[class*="Sidebar"], nav[class*="Sidebar"] {
+    /* ─── SIDEBAR NAVIGATION ─── */
+    div[class*="Sidebar"],
+    aside[class*="Sidebar"],
+    nav[class*="Sidebar"] {
       background: var(--sh-sidebar-bg) !important;
       border-right: 1px solid rgba(255,255,255,0.06) !important;
       box-shadow: 2px 0 16px rgba(0,0,0,0.15) !important;
     }
-    div[class*="Sidebar"] a, div[class*="Sidebar"] span,
-    nav[class*="Sidebar"] a, nav[class*="Sidebar"] span {
-      color: #94a3b8 !important; font-weight: 500 !important; font-size: 14px !important;
-      border-radius: 8px !important; transition: all 0.2s ease !important;
+    div[class*="Sidebar"] a,
+    div[class*="Sidebar"] span,
+    nav[class*="Sidebar"] a,
+    nav[class*="Sidebar"] span {
+      color: #94a3b8 !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
     }
-    div[class*="Sidebar"] a:hover, nav[class*="Sidebar"] a:hover {
-      color: #fff !important; background: var(--sh-sidebar-hover) !important;
+    div[class*="Sidebar"] a:hover,
+    nav[class*="Sidebar"] a:hover {
+      color: #fff !important;
+      background: var(--sh-sidebar-hover) !important;
     }
-    div[class*="Sidebar"] a[class*="active"], nav[class*="Sidebar"] a[class*="active"],
+    /* Active sidebar item */
+    div[class*="Sidebar"] a[class*="active"],
+    div[class*="Sidebar"] a[href][class*="selected"],
+    nav[class*="Sidebar"] a[class*="active"],
     [class*="SidebarNavLink"][class*="active"] {
-      color: #fff !important; background: var(--sh-accent) !important;
+      color: #fff !important;
+      background: var(--sh-accent) !important;
       box-shadow: 0 2px 8px rgba(13,110,253,0.3) !important;
     }
-    div[class*="Sidebar"] h2, nav[class*="Sidebar"] h2 {
-      color: #475569 !important; font-size: 11px !important;
-      text-transform: uppercase !important; letter-spacing: 1.5px !important; font-weight: 700 !important;
+    /* Sidebar section headers */
+    div[class*="Sidebar"] h2,
+    nav[class*="Sidebar"] h2 {
+      color: #475569 !important;
+      font-size: 11px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1.5px !important;
+      font-weight: 700 !important;
     }
 
-    main, [class*="AppMain"] { background: var(--sh-surface) !important; }
-
-    div[class*="ListCard"], div[class*="EntryListing"],
-    [class*="ObjectWidgetTopBar"], table[class*="EntryListing"] {
-      background: var(--sh-card) !important; border: 1px solid var(--sh-border) !important;
-      border-radius: var(--sh-radius) !important; box-shadow: var(--sh-shadow) !important; overflow: hidden !important;
-    }
-    [class*="ListCardLink"], [class*="EntryListingRow"] {
-      border-bottom: 1px solid #f1f5f9 !important; transition: all 0.15s ease !important; padding: 14px 20px !important;
-    }
-    [class*="ListCardLink"]:hover, [class*="EntryListingRow"]:hover {
-      background: #f0f7ff !important; transform: translateX(2px) !important;
+    /* ─── MAIN CONTENT AREA ─── */
+    main, [class*="AppMain"] {
+      background: var(--sh-surface) !important;
     }
 
-    h1[class*="Heading"], h2[class*="ViewHeader"] {
-      color: var(--sh-text) !important; font-weight: 700 !important;
-      font-size: 24px !important; letter-spacing: -0.5px !important;
+    /* ─── COLLECTION LIST / CARDS ─── */
+    div[class*="ListCard"],
+    div[class*="EntryListing"],
+    [class*="ObjectWidgetTopBar"],
+    table[class*="EntryListing"] {
+      background: var(--sh-card) !important;
+      border: 1px solid var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      box-shadow: var(--sh-shadow) !important;
+      overflow: hidden !important;
+    }
+    /* Entry rows */
+    [class*="ListCardLink"],
+    [class*="EntryListingRow"] {
+      border-bottom: 1px solid #f1f5f9 !important;
+      transition: all 0.15s ease !important;
+      padding: 14px 20px !important;
+    }
+    [class*="ListCardLink"]:hover,
+    [class*="EntryListingRow"]:hover {
+      background: #f0f7ff !important;
+      transform: translateX(2px) !important;
     }
 
-    button[class*="ToolbarButton"], [class*="PublishButton"], a[class*="ToolbarButton"] {
-      background: var(--sh-accent) !important; color: #fff !important; border: none !important;
-      border-radius: 8px !important; font-weight: 600 !important; font-size: 14px !important;
-      padding: 8px 20px !important; box-shadow: 0 2px 8px rgba(13,110,253,0.25) !important;
-      transition: all 0.2s ease !important; cursor: pointer !important;
+    /* ─── HEADINGS ─── */
+    h1[class*="Heading"],
+    h2[class*="ViewHeader"] {
+      color: var(--sh-text) !important;
+      font-weight: 700 !important;
+      font-size: 24px !important;
+      letter-spacing: -0.5px !important;
     }
-    button[class*="ToolbarButton"]:hover, [class*="PublishButton"]:hover {
+
+    /* ─── BUTTONS ─── */
+    button[class*="ToolbarButton"],
+    [class*="PublishButton"],
+    a[class*="ToolbarButton"] {
+      background: var(--sh-accent) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      padding: 8px 20px !important;
+      box-shadow: 0 2px 8px rgba(13,110,253,0.25) !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+    }
+    button[class*="ToolbarButton"]:hover,
+    [class*="PublishButton"]:hover {
       background: var(--sh-accent-hover) !important;
-      box-shadow: 0 4px 16px rgba(13,110,253,0.35) !important; transform: translateY(-1px) !important;
+      box-shadow: 0 4px 16px rgba(13,110,253,0.35) !important;
+      transform: translateY(-1px) !important;
     }
-    button[class*="DeleteButton"] { background: #ef4444 !important; box-shadow: 0 2px 8px rgba(239,68,68,0.25) !important; }
-    button[class*="DeleteButton"]:hover { background: #dc2626 !important; }
+    /* Delete button */
+    button[class*="DeleteButton"] {
+      background: #ef4444 !important;
+      box-shadow: 0 2px 8px rgba(239,68,68,0.25) !important;
+    }
+    button[class*="DeleteButton"]:hover {
+      background: #dc2626 !important;
+    }
 
-    input[class*="Input"], textarea[class*="Textarea"], select[class*="Select"],
-    [class*="ControlInput"], [class*="TextField"] input, [class*="TextControl"] input, [class*="TextControl"] textarea {
-      border: 2px solid var(--sh-border) !important; border-radius: 8px !important;
-      padding: 10px 14px !important; font-size: 14px !important;
-      transition: all 0.2s ease !important; background: #fff !important;
+    /* ─── FORM INPUTS ─── */
+    input[class*="Input"],
+    textarea[class*="Textarea"],
+    select[class*="Select"],
+    [class*="ControlInput"],
+    [class*="TextField"] input,
+    [class*="TextControl"] input,
+    [class*="TextControl"] textarea {
+      border: 2px solid var(--sh-border) !important;
+      border-radius: 8px !important;
+      padding: 10px 14px !important;
+      font-size: 14px !important;
+      transition: all 0.2s ease !important;
+      background: #fff !important;
     }
-    input:focus, textarea:focus, select:focus, [class*="TextField"] input:focus {
+    input:focus, textarea:focus, select:focus,
+    [class*="TextField"] input:focus {
       border-color: var(--sh-accent) !important;
-      box-shadow: 0 0 0 3px rgba(13,110,253,0.12) !important; outline: none !important;
+      box-shadow: 0 0 0 3px rgba(13,110,253,0.12) !important;
+      outline: none !important;
     }
 
-    label[class*="ControlLabel"], [class*="FieldLabel"], label[for] {
-      color: var(--sh-text) !important; font-weight: 600 !important; font-size: 13px !important;
-      text-transform: uppercase !important; letter-spacing: 0.5px !important; margin-bottom: 6px !important;
+    /* ─── FIELD LABELS ─── */
+    label[class*="ControlLabel"],
+    [class*="FieldLabel"],
+    label[for] {
+      color: var(--sh-text) !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      margin-bottom: 6px !important;
     }
-    [class*="ControlHint"], span[class*="hint"] { color: var(--sh-text-muted) !important; font-size: 12px !important; font-style: normal !important; }
-
-    [class*="MarkdownWidget"], [class*="EditorControl"] {
-      border: 2px solid var(--sh-border) !important; border-radius: var(--sh-radius) !important; overflow: hidden !important;
-    }
-    [class*="EditorToolbar"], [class*="Toolbar"][class*="markdown"] {
-      background: #f8fafc !important; border-bottom: 1px solid var(--sh-border) !important; padding: 8px !important;
-    }
-    [class*="EditorToolbar"] button { border-radius: 6px !important; padding: 6px 10px !important; }
-    [class*="EditorToolbar"] button:hover { background: #e2e8f0 !important; }
-
-    [class*="ImageWidget"], [class*="FileWidget"] {
-      border: 2px dashed var(--sh-border) !important; border-radius: var(--sh-radius) !important;
-      background: #fafbfc !important; transition: all 0.2s ease !important;
-    }
-    [class*="ImageWidget"]:hover, [class*="FileWidget"]:hover {
-      border-color: var(--sh-accent) !important; background: #f0f7ff !important;
+    /* Field hints */
+    [class*="ControlHint"],
+    span[class*="hint"] {
+      color: var(--sh-text-muted) !important;
+      font-size: 12px !important;
+      font-style: normal !important;
     }
 
-    [class*="PreviewPane"] { background: #fff !important; border-left: 2px solid var(--sh-border) !important; }
+    /* ─── MARKDOWN EDITOR ─── */
+    [class*="MarkdownWidget"],
+    [class*="EditorControl"] {
+      border: 2px solid var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      overflow: hidden !important;
+    }
+    [class*="EditorToolbar"],
+    [class*="Toolbar"][class*="markdown"] {
+      background: #f8fafc !important;
+      border-bottom: 1px solid var(--sh-border) !important;
+      padding: 8px !important;
+    }
+    [class*="EditorToolbar"] button {
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+    }
+    [class*="EditorToolbar"] button:hover {
+      background: #e2e8f0 !important;
+    }
 
+    /* ─── DROPDOWN / SELECT ─── */
+    [class*="SelectWidget"] select {
+      appearance: none !important;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E") no-repeat right 12px center !important;
+      padding-right: 36px !important;
+    }
+
+    /* ─── IMAGE WIDGET ─── */
+    [class*="ImageWidget"],
+    [class*="FileWidget"] {
+      border: 2px dashed var(--sh-border) !important;
+      border-radius: var(--sh-radius) !important;
+      background: #fafbfc !important;
+      transition: all 0.2s ease !important;
+    }
+    [class*="ImageWidget"]:hover,
+    [class*="FileWidget"]:hover {
+      border-color: var(--sh-accent) !important;
+      background: #f0f7ff !important;
+    }
+
+    /* ─── PREVIEW PANE ─── */
+    [class*="PreviewPane"] {
+      background: #fff !important;
+      border-left: 2px solid var(--sh-border) !important;
+    }
+
+    /* ─── NOTIFICATIONS / TOASTS ─── */
+    [class*="Notification"][class*="success"],
+    [class*="Toast"][class*="success"] {
+      background: var(--sh-success) !important;
+      border-radius: 8px !important;
+    }
+
+    /* ─── SCROLLBAR ─── */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-    [class*="SearchInput"], input[type="search"] {
-      background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.12) !important;
-      color: #fff !important; border-radius: 8px !important;
+    /* ─── SEARCH BOX ─── */
+    [class*="SearchInput"],
+    input[type="search"] {
+      background: rgba(255,255,255,0.06) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      color: #fff !important;
+      border-radius: 8px !important;
     }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       div[class*="Sidebar"] { width: 240px !important; }
       h1[class*="Heading"] { font-size: 18px !important; }
     }
   </style>
 
-  <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var loader = document.getElementById('sh-loader');
-      if (!loader) return;
-
-      function hideLoader() {
-        loader.classList.add('hide');
-        setTimeout(function() { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 600);
-      }
-
-      // CMS yüklenince DOM'u izle
-      var checkCMS = setInterval(function() {
-        var root = document.getElementById('nc-root');
-        if (root && root.children.length > 0) {
-          clearInterval(checkCMS);
-          clearTimeout(fallback);
-          hideLoader();
-        }
-      }, 200);
-
-      // Max 10 saniye bekle, sonra zorla aç
-      var fallback = setTimeout(function() {
-        clearInterval(checkCMS);
-        hideLoader();
-      }, 10000);
-    });
-  </script>
 </head>
 <body>
-  <div id="nc-root"></div>
+  <!-- Premium Loading Screen -->
   <div id="sh-loader">
     <img src="/logo.webp" alt="SH Danışmanlık" />
     <h2>SH Danışmanlık</h2>
     <p>Yönetim Paneli Yükleniyor...</p>
     <div class="sh-spinner"></div>
   </div>
+
+  <!-- Decap CMS — body'de olması zorunlu -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    // Loading screen — CMS yüklendikten sonra kaldır
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('sh-loader');
+      if (loader) {
+        setTimeout(function() {
+          loader.classList.add('hide');
+          setTimeout(function() { loader.remove(); }, 600);
+        }, 800);
+      }
+    });
+  </script>
 </body>
 </html>
