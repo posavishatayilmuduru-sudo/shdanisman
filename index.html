@@ -61,8 +61,11 @@ permalink: "/"
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
     /* ========== HEADER ========== */
-.main-header {
+    .main-header {
     background: rgba(255,255,255,0.98);
+    height: auto;
+      min-height: 105px;
+      overflow: visible;
     position: sticky;
     top: 0;
     z-index: 10000;
@@ -78,50 +81,40 @@ permalink: "/"
     width: 100%; 
     padding: 0 15px;
 }
-.logo-img:hover { transform: scale(1.05); }
-    .main-nav ul { list-style: none; display: flex; align-items: center; gap: 8px; }
+.logo-img { 
+    height: 100px;  /* ← Sabit boyut */
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    margin-right: 40px;
+}
+
+    /* ========== NAVIGATION ========== */
+    .main-nav ul { display: flex; align-items: center; gap: 20px; }
     .main-nav ul li { position: relative; }
-    .main-nav ul li a { text-decoration: none; color: var(--dark-color); font-weight: 600; padding: 10px 5px; font-size: 0.95rem; }
-.main-nav > ul > li > a:not(.btn-nav-final)::after { content: ''; position: absolute; bottom: 0px; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
-.main-nav > ul > li > a:hover::after, .main-nav > ul > li > a.active::after { width: 100%; }
-.main-nav ul li.dropdown { position: relative; }
-.main-nav ul li a:hover {
-  color: #000;
-}
-.nav-chevron {
-  width: 17px !important;
-  height: 17px !important;
-  margin-left: 4px !important;
-  stroke-width: 2px !important;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: 0px;
-  transition: transform 0.3s ease, color 0.3s ease;
-  opacity: 1.;
-}
-.dropdown:hover > a .nav-chevron { 
-    transform: rotate(180deg); 
-    color: var(--primary-color);
-}
-    .main-nav .dropdown-menu {
-    display: none; 
-    position: absolute; 
-    top: 100%; 
-    left: 0; 
-    background: #fff;
-    min-width: 240px; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); 
-    padding: 15px 0; 
-    border-radius: 8px;
-}
-    .main-nav .dropdown:hover .dropdown-menu { display: block; }
-.main-nav .dropdown-menu li { width: 100%; }
-.main-nav .dropdown-menu li a { display: block; padding: 10px 20px; font-weight: 500; }
-.main-nav .dropdown-menu li a { display: block; padding: 10px 20px; color: var(--dark-color); font-weight: 500; transition: all 0.2s ease; border-radius: 5px; margin: 0 5px; }
-.main-nav .dropdown-menu li a:hover { background-color: var(--gray-bg); color: var(--primary-color); }
+    .main-nav ul li a {
+      color: var(--dark-color);
+      font-weight: 600;
+      padding: 10px 5px;
+      font-size: 0.95rem;
+    }
+    .main-nav ul li a:hover { color: var(--primary-color); }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      min-width: 240px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      border-radius: 8px;
+      z-index: 100;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li { width: 100%; }
+    .dropdown-menu li a { display: block; padding: 10px 20px; font-weight: 500; font-size: 0.9rem; }
+    .dropdown-menu li a:hover { background: #f0f4ff; color: var(--primary-color); }
     .nav-close-btn { display: none; }
 
     /* ========== HAMBURGER (mobil) ========== */
@@ -390,18 +383,41 @@ permalink: "/"
     .footer-bottom { margin-top: 40px; padding-top: 24px; border-top: 1px solid #333; text-align: center; font-size: 0.82rem; color: #999; }
     .footer-bottom a { color: #00a8e8; font-weight: 600; }
 
-    /* KURUMSAL WHATSAPP WIDGET (Sıfır JavaScript - Maksimum Hız - Ako Dijital Standardı) */
-        .wa-floating-btn { position: fixed; bottom: 25px; right: 25px; z-index: 9999; display: flex; align-items: center; text-decoration: none; transition: all 0.3s ease; }
-        .wa-icon { background-color: #25d366; color: white !important; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
-        .wa-label { background: white; color: #333; padding: 10px 18px; border-radius: 25px; margin-right: 12px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); white-space: nowrap; }
-        @media (max-width: 768px) { .wa-label { display: none; } }
-        .wa-floating-btn:hover { transform: translateY(-3px); }
+    /* ========== WHATSAPP FLOAT ========== */
+    .wa-floating-btn {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .wa-icon {
+      background: #25d366;
+      color: #fff;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      transition: transform 0.3s;
+    }
+    .wa-floating-btn:hover .wa-icon { transform: scale(1.08); }
+    .wa-label {
+      background: #fff;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 24px;
+      margin-left: 12px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      white-space: nowrap;
+    }
 
     /* ========== INLINE SVG ICON STYLES ========== */
     .icon-svg { display: inline-block; vertical-align: middle; width: 1em; height: 1em; fill: currentColor; }
-    .nav-chevron { width: 0.7em; height: 0.7em; margin-left: 4px; vertical-align: middle; transition: transform 0.3s ease; display: inline-block; }
-    .dropdown:hover .nav-chevron { transform: rotate(180deg); }
-    .dropdown.open .nav-chevron { transform: rotate(180deg); }
 
     /* ========== MOBILE NAV OVERLAY ========== */
     .mobile-nav-overlay {
@@ -412,7 +428,11 @@ permalink: "/"
       z-index: 9998;
     }
     .mobile-nav-overlay.active { display: block; }
-    .main-nav.mobile-open {
+    /* chevron rotate – desktop hover */
+    .main-nav .dropdown > a i { font-size: 0.7rem; margin-left: 5px; transition: transform 0.3s ease; }
+    .main-nav .dropdown:hover > a i { transform: rotate(180deg); }
+
+    .main-nav.active {
       display: flex !important;
       flex-direction: column;
       position: fixed;
@@ -425,9 +445,9 @@ permalink: "/"
       padding: 24px 0;
       overflow-y: auto;
     }
-    .main-nav.mobile-open ul { flex-direction: column; gap: 0; padding: 0 20px; }
-    .main-nav.mobile-open ul li a { display: block; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 1rem; }
-    .main-nav.mobile-open .dropdown-menu {
+    .main-nav.active ul { flex-direction: column; gap: 0; padding: 0 20px; }
+    .main-nav.active ul li a { display: block; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 1rem; }
+    .main-nav.active .dropdown-menu {
       position: static;
       box-shadow: none;
       border-radius: 0;
@@ -436,16 +456,20 @@ permalink: "/"
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
+      display: block !important;
     }
-    .main-nav.mobile-open .dropdown.open .dropdown-menu { 
-      display: block;
+    .main-nav.active .dropdown.mob-open > .dropdown-menu { 
       max-height: 500px;
     }
-    .main-nav.mobile-open .dropdown-menu li a {
+    .main-nav.active .dropdown-menu li a {
       border-bottom: none;
       padding: 8px 0;
       font-size: 0.9rem;
     }
+    /* chevron rotate – mobile mob-open */
+    .main-nav.active .dropdown > a i { font-size: 0.9rem; transition: transform 0.3s ease; }
+    .main-nav.active .dropdown:hover > a i { transform: none !important; }
+    .main-nav.active .dropdown.mob-open > a i { transform: rotate(180deg) !important; }
     .nav-close-btn.mobile-show {
       display: flex;
       align-items: center;
@@ -512,62 +536,53 @@ permalink: "/"
 <!-- ===== HEADER ===== -->
 <header class="main-header">
   <div class="container header-container">
-    <a href="index.html" class="logo-container">
-      <img src="logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" fetchpriority="high">
+    <a href="/index.html" class="logo-container">
+      <img src="/logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="60" fetchpriority="high">
     </a>
     <nav class="main-nav" id="mainNav">
+      <button class="nav-close-btn" id="navCloseBtn" aria-label="Menüyü kapat">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
       <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        
+        <li><a href="/index.html">Ana Sayfa</a></li>
         <li class="dropdown">
-          <a href="#">Kurumsal 
-            <!-- GÜNCELLENEN OK -->
-            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
-          </a>
+          <a href="#" aria-haspopup="true">Kurumsal <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="hakkimizda.html">Hakkımızda</a></li>
-            <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
+            <li><a href="/hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="/sss.html">Sıkça Sorulan Sorular</a></li>
           </ul>
         </li>
-
         <li class="dropdown">
-          <a href="#">Hizmetlerimiz 
-            <!-- GÜNCELLENEN OK -->
-            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
-          </a>
+          <a href="#" aria-haspopup="true">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
-            <li><a href="hizmet-derbis.html">DERBİS İşlemleri</a></li>
-            <li><a href="hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
-            <li><a href="hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
-            <li><a href="hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
-            <li><a href="hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
-            <li><a href="hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+            <li><a href="/hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+            <li><a href="/hizmet-derbis.html">DERBİS İşlemleri</a></li>
+            <li><a href="/hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+            <li><a href="/hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+            <li><a href="/hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+            <li><a href="/hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+            <li><a href="/hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
           </ul>
         </li>
-
         <li class="dropdown">
-          <a href="#">Bilgi Bankası 
-            <!-- GÜNCELLENEN OK -->
-            <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
-          </a>
+          <a href="#" aria-haspopup="true">Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="mevzuat.html">Mevzuatlar</a></li>
-            <li><a href="blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li>
-            <li><a href="blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
-            <li><a href="blog.html">Blog & Makaleler</a></li>
+            <li><a href="/mevzuat.html">Mevzuat Rehberi</a></li>
+            <li><a href="/blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li>
+            <li><a href="/blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
+            <li><a href="/blog.html">Blog & Makaleler</a></li>
           </ul>
         </li>
-
-        <li><a href="referanslar.html">Referanslar</a></li>
-        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="/referanslar.html">Referanslar</a></li>
+        <li><a href="/iletisim.html">İletişim</a></li>
       </ul>
     </nav>
-    <button class="nav-open-btn" id="navOpenBtn">
+    <button class="nav-open-btn" id="navOpenBtn" aria-label="Menüyü aç">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </header>
+
 <main>
 <!-- ===== SLIDER ===== -->
 <section class="slider" aria-label="Ana sayfa karusel">
@@ -604,10 +619,10 @@ permalink: "/"
     </div>
   </div>
   <button class="slider-btn prev" aria-label="Önceki Slayt">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
   <button class="slider-btn next" aria-label="Sonraki Slayt">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
   </button>
   <div class="slider-dots" id="sliderDots"></div>
 </section>
@@ -918,12 +933,12 @@ permalink: "/"
 
 <!-- ===== WHATSAPP FLOAT ===== -->
 <a href="https://wa.me/905347054234" class="wa-floating-btn" target="_blank" rel="noopener" aria-label="WhatsApp üzerinden bizimle iletişime geçin">
-  <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
   <div class="wa-icon">
     <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
     </svg>
   </div>
+  <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
 </a>
 
 <!-- ===== DEFERRED JS — sadece etkileşim için ===== -->
@@ -1005,24 +1020,23 @@ permalink: "/"
     });
   }
 
-  // --- MOBILE NAV ---
+  // --- MOBILE NAV (style.css sistemiyle uyumlu: active + mob-open) ---
   var navOpenBtn = document.getElementById('navOpenBtn');
   var navCloseBtn = document.getElementById('navCloseBtn');
   var mainNav = document.getElementById('mainNav');
   var navOverlay = document.getElementById('navOverlay');
 
   function openNav(){
-    mainNav.classList.add('mobile-open');
+    mainNav.classList.add('active');
     navOverlay.classList.add('active');
     navCloseBtn.classList.add('mobile-show');
   }
   function closeNav(){
-    mainNav.classList.remove('mobile-open');
+    mainNav.classList.remove('active');
     navOverlay.classList.remove('active');
     navCloseBtn.classList.remove('mobile-show');
-    // Tüm açık dropdownları kapat
-    document.querySelectorAll('.dropdown.open').forEach(function(dropdown){
-      dropdown.classList.remove('open');
+    document.querySelectorAll('.dropdown.mob-open').forEach(function(dropdown){
+      dropdown.classList.remove('mob-open');
     });
   }
 
@@ -1030,21 +1044,19 @@ permalink: "/"
   navCloseBtn.addEventListener('click', closeNav);
   navOverlay.addEventListener('click', closeNav);
 
-  // Mobile dropdown toggle - ACCORDION MANTIK
+  // Mobile dropdown toggle — mob-open sistemi
   document.querySelectorAll('.main-nav .dropdown > a').forEach(function(link){
     link.addEventListener('click', function(e){
-      e.preventDefault();
-      var parentDropdown = this.parentElement;
-      var wasOpen = parentDropdown.classList.contains('open');
-      
-      // Önce tüm dropdownları kapat
-      document.querySelectorAll('.dropdown').forEach(function(dropdown){
-        dropdown.classList.remove('open');
-      });
-      
-      // Eğer kapalıysa aç
-      if(!wasOpen){
-        parentDropdown.classList.add('open');
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        var parentDropdown = this.parentElement;
+        var wasOpen = parentDropdown.classList.contains('mob-open');
+        document.querySelectorAll('.dropdown.mob-open').forEach(function(dropdown){
+          dropdown.classList.remove('mob-open');
+        });
+        if(!wasOpen){
+          parentDropdown.classList.add('mob-open');
+        }
       }
     });
   });

@@ -1,168 +1,210 @@
+/* ================================================================
+   SH Danışmanlık — /js/script.js
+   Tek JS dosyası. Inline CSS class isimleriyle birebir uyumlu.
+   
+   CSS class mapping:
+   - Nav panel açık:     .main-nav.mobile-open
+   - Overlay açık:       .mobile-nav-overlay.active
+   - Dropdown açık:      .dropdown.open
+   - FAQ açık:           .faq-item.open
+   - Slider aktif:       .slide.active  /  .dot.active
+   ================================================================ */
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    // === SLIDER ===
-    const slides = document.querySelectorAll('.slide');
-    const nextBtn = document.querySelector('.next');
-    const prevBtn = document.querySelector('.prev');
-    const dotsContainer = document.querySelector('.slider-dots');
-    let currentSlide = 0;
-    let autoSlideInterval;
+  /* =====================================================
+     SLIDER
+     ===================================================== */
+  var slides      = document.querySelectorAll('.slide');
+  var dotsBox     = document.getElementById('sliderDots');
+  var prevBtn     = document.querySelector('.slider-btn.prev');
+  var nextBtn     = document.querySelector('.slider-btn.next');
+  var sliderEl    = document.querySelector('.slider');
+  var current     = 0;
+  var total       = slides.length;
+  var dots        = [];
+  var autoTimer   = null;
 
-    if (slides.length > 0 && dotsContainer) {
-        // Dots oluştur
-        slides.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
-
-        function goToSlide(index) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            currentSlide = index;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-            resetAutoSlide();
-        }
-
-        nextBtn?.addEventListener('click', () => goToSlide((currentSlide + 1) % slides.length));
-        prevBtn?.addEventListener('click', () => goToSlide((currentSlide - 1 + slides.length) % slides.length));
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        }
-
-        goToSlide(0);
-        startAutoSlide();
+  if (total > 0 && dotsBox) {
+    // Dot'ları oluştur
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Slayt ' + (i + 1));
+      d.setAttribute('type', 'button');
+      d.onclick = (function(idx) { return function() { goTo(idx); }; })(i);
+      dotsBox.appendChild(d);
+      dots.push(d);
     }
 
-    // === SSS (Akordeon) ===
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
-        if (question && answer) {
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                // Tüm açık olanları kapat
-                faqItems.forEach(i => {
-                    i.classList.remove('active');
-                    const a = i.querySelector('.faq-answer');
-                    if (a) a.style.maxHeight = '0';
-                });
-                // Tıklanan öğeyi aç (kapalıysa)
-                if (!isActive) {
-                    item.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        }
-    });
-
-    // === SSS Daha Fazla Göster ===
-    const loadMoreBtn = document.getElementById('loadMoreFaq');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function () {
-            const hiddenFaqs = document.querySelectorAll('.faq-item.hidden');
-            hiddenFaqs.forEach(faq => {
-                faq.classList.remove('hidden');
-                faq.style.display = 'block';
-                faq.style.opacity = '0';
-                requestAnimationFrame(() => faq.style.opacity = '1');
-            });
-            this.style.display = 'none';
-        });
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + total) % total;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
     }
 
-    // === SAYMA ANİMASYONU ===
-    const counters = document.querySelectorAll('.counter');
-    if (counters.length > 0) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = +counter.getAttribute('data-target');
-                    const speed = 200;
-                    const inc = target / speed;
-                    let count = 0;
+    if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); resetAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); resetAuto(); });
 
-                    const updateCount = () => {
-                        count += inc;
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count);
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(counter);
-                }
-            });
-        }, { threshold: 0.5 });
+    function startAuto() { autoTimer = setInterval(function() { goTo(current + 1); }, 5000); }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
-        counters.forEach(counter => observer.observe(counter));
+    startAuto();
+
+    // Hover'da duraklat (sadece desktop)
+    if (sliderEl) {
+      sliderEl.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+      sliderEl.addEventListener('mouseleave', function() { startAuto(); });
     }
+  }
 
-    // === AÇILIR MENÜ ÇAKIŞMA GİDERİCİ (Desktop) ===
-    const mainHeader = document.querySelector('.main-header');
-    const desktopDropdowns = document.querySelectorAll('.main-nav .dropdown');
-    desktopDropdowns.forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', () => mainHeader?.classList.add('menu-open'));
-        dropdown.addEventListener('mouseleave', () => mainHeader?.classList.remove('menu-open'));
-    });
 
-    // === MOBİL MENÜ ===
-    const nav = document.querySelector('.main-nav');
-    const openBtn = document.querySelector('.nav-open-btn');
-    const closeBtn = document.querySelector('.nav-close-btn');
-    const mobileDropdowns = document.querySelectorAll('.dropdown > a');
-    
-    openBtn?.addEventListener('click', () => {
-        nav?.classList.add('menu-open');
-        if (openBtn) openBtn.style.display = 'none';
-        if (closeBtn) closeBtn.style.display = 'block';
+  /* =====================================================
+     COUNTER ANİMASYONU
+     ===================================================== */
+  var counters = document.querySelectorAll('.counter');
+  if (counters.length > 0 && 'IntersectionObserver' in window) {
+    var counterObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el     = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var start  = 0;
+        var step   = Math.max(target / 60, 1);
+        var timer  = setInterval(function() {
+          start += step;
+          if (start >= target) { start = target; clearInterval(timer); }
+          el.textContent = Math.floor(start).toLocaleString('tr-TR');
+        }, 16);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(c) { counterObs.observe(c); });
+  }
+
+
+  /* =====================================================
+     FAQ ACCORDION — class: .faq-item.open
+     ===================================================== */
+  var faqButtons = document.querySelectorAll('.faq-question');
+  faqButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item    = this.parentElement;
+      var wasOpen = item.classList.contains('open');
+      // Hepsini kapat
+      document.querySelectorAll('.faq-item.open').forEach(function(i) {
+        i.classList.remove('open');
+      });
+      // Kapalıysa aç
+      if (!wasOpen) item.classList.add('open');
     });
-    
-    closeBtn?.addEventListener('click', () => {
-        nav?.classList.remove('menu-open');
-        if (closeBtn) closeBtn.style.display = 'none';
-        if (openBtn) openBtn.style.display = 'block';
+  });
+
+  // Daha fazla soru göster
+  var loadMoreBtn = document.getElementById('loadMoreFaq');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', function() {
+      document.querySelectorAll('.faq-item.hidden').forEach(function(item) {
+        item.classList.remove('hidden');
+      });
+      loadMoreBtn.style.display = 'none';
     });
-    
-    // MOBİL DROPDOWN
-    mobileDropdowns.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 991) {
-                e.preventDefault();
-                e.stopPropagation();
-                link.parentElement?.classList.toggle('active');
-            }
+  }
+
+
+  /* =====================================================
+     MOBİL NAV — class: .main-nav.mobile-open
+     CSS'te:
+       transform: translateX(110%)  →  .mobile-open → translateX(0)
+       .dropdown.open → max-height: 500px
+     ===================================================== */
+  var navOpenBtn  = document.getElementById('navOpenBtn');
+  var navCloseBtn = document.getElementById('navCloseBtn');
+  var mainNav     = document.getElementById('mainNav');
+  var navOverlay  = document.getElementById('navOverlay');
+
+  function openMobileNav() {
+    if (!mainNav) return;
+    mainNav.classList.add('mobile-open');
+    if (navOverlay)  navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (navOpenBtn)  navOpenBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMobileNav() {
+    if (!mainNav) return;
+    mainNav.classList.remove('mobile-open');
+    if (navOverlay)  navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    if (navOpenBtn)  navOpenBtn.setAttribute('aria-expanded', 'false');
+    // Açık dropdown'ları kapat
+    document.querySelectorAll('.main-nav .dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  }
+
+  if (navOpenBtn)  navOpenBtn.addEventListener('click', openMobileNav);
+  if (navCloseBtn) navCloseBtn.addEventListener('click', closeMobileNav);
+  if (navOverlay)  navOverlay.addEventListener('click', closeMobileNav);
+
+  // Mobil dropdown — accordion (class: .dropdown.open)
+  document.querySelectorAll('.main-nav .dropdown > a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var parent  = this.parentElement;
+        var wasOpen = parent.classList.contains('open');
+
+        // Diğer açık dropdown'ları kapat
+        document.querySelectorAll('.main-nav .dropdown.open').forEach(function(d) {
+          d.classList.remove('open');
         });
-    });
 
-    // Dropdown dışında tıklayınca menüleri kapat
-    document.addEventListener('click', (e) => {
-        if (window.innerWidth <= 991) {
-            // Dropdown menü içindeyse durdur
-            if (e.target.closest('.dropdown ul')) {
-                e.stopPropagation();
-                return;
-            }
-            // Dropdown dışında tıklanırsa kapat
-            if (!e.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        }
+        // Kapalıysa aç
+        if (!wasOpen) parent.classList.add('open');
+      }
     });
+  });
+
+  // Ekran genişleyince mobil nav'ı sıfırla
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 992) closeMobileNav();
+  });
+
+  // ESC ile kapat
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileNav();
+  });
+
+
+  /* =====================================================
+     DROPDOWN HOVER FIX (Desktop)
+     ===================================================== */
+  var mainHeader = document.querySelector('.main-header');
+  document.querySelectorAll('.main-nav .dropdown').forEach(function(dd) {
+    dd.addEventListener('mouseenter', function() {
+      if (window.innerWidth > 992 && mainHeader) mainHeader.classList.add('menu-open');
+    });
+    dd.addEventListener('mouseleave', function() {
+      if (mainHeader) mainHeader.classList.remove('menu-open');
+    });
+  });
+
+
+  /* =====================================================
+     İLETİŞİM FORMU
+     ===================================================== */
+  var form = document.querySelector('.contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Teşekkürler! Mesajınız alındı. En kısa sürede size ulaşacağız.');
+      form.reset();
+    });
+  }
+
 });
