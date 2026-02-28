@@ -1,16 +1,113 @@
----
-layout: layouts/base.html
-title: "Fikirlerinizi Sürdürülebilir Projelere Dönüştürün"
-description: "Dernek ve vakıf projeleriniz için ulusal ve uluslararası hibe fonları. PCM metodolojisiyle profesyonel proje yazma, başvuru ve raporlama desteği."
-excerpt: "Doğru Finansal Kaynak ve Profesyonel Planlama ile Hayallerinizi Kağıt Üzerinden Gerçeğe Taşıyoruz."
-banner_image: "/img/banner2.webp"
-sidebar_title: ""
-sidebar_items:
-sidebar_cta_text: "Proje fikrinizi profesyonel bir başvuru dosyasına dönüştürmek için uzmanlarımızla görüşün."
-permalink: "/hizmet-proje-yazma.html"
----
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO VE PROJE OTORİTE AYARLARI -->
+    <title>Proje Yazma ve Hibe Danışmanlığı | PCM Uzmanlığı - SH Danışmanlık</title>
+    <meta name="description" content="Dernek ve vakıf projeleriniz için ulusal ve uluslararası hibe fonları. PCM metodolojisiyle profesyonel proje yazma, başvuru ve raporlama desteği.">
+    <meta name="keywords" content="stk proje yazma, hibe başvurusu danışmanlığı, PCM proje döngüsü yönetimi, AB projeleri danışmanlık, kalkınma ajansı projeleri, dernek fon bulma">
+    <link rel="canonical" href="https://shdanismanlik.netlify.app/hizmet-proje-yazma.html">
 
-<h2>Hibe ve Fon Kaynaklarına Erişimde Profesyonel Destek</h2>
+    <!-- JSON-LD ŞEMASI -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Proje Yazma ve Fon Geliştirme Danışmanlığı",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "SH Danışmanlık"
+      },
+      "description": "Ulusal ve uluslararası hibe programlarına yönelik profesyonel proje geliştirme, PCM yönetimi ve teknik raporlama."
+    }
+    </script>
+
+    <!-- PERFORMANS VE STİLLER -->
+    <link rel="preload" as="image" href="img/banner2.webp" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="logo.webp" type="image/webp">
+
+    <style>
+        /* KURUMSAL WHATSAPP WIDGET (Ako Dijital Standartı - Sol Alt) */
+        .wa-floating-btn { position: fixed; bottom: 25px; left: 25px; z-index: 9999; display: flex; align-items: center; text-decoration: none; transition: all 0.3s ease; }
+        .wa-icon { background-color: #25d366; color: white !important; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .wa-label { background: white; color: #333; padding: 10px 18px; border-radius: 25px; margin-left: 12px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.1); white-space: nowrap; }
+        @media (max-width: 768px) { .wa-label { display: none; } }
+        .wa-floating-btn:hover { transform: translateY(-3px); }
+
+        /* Proje Sayfası Özel Stilleri */
+        .project-feature { display: flex; gap: 20px; background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee; transition: 0.3s; }
+        .project-feature:hover { border-color: #1a237e; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .project-feature i { font-size: 28px; color: #1a237e; margin-top: 5px; }
+        .project-feature h4 { margin: 0 0 10px 0; color: #1a237e; }
+        .project-feature p { margin: 0; font-size: 15px; color: #666; }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+  <div class="container header-container">
+    <a href="index.html" class="logo-container">
+      <img src="logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" />
+    </a>
+    <nav class="main-nav">
+      <button class="nav-close-btn" aria-label="Menüyü kapat"><i class="fas fa-times"></i></button>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+          <a href="#">Kurumsal <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="hizmetlerimiz.html" class="active">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+           <li><a href="hizmet-derbis.html">DERBİS İşlemleri</a></li>
+            <li><a href="hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+            <li><a href="hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+            <li><a href="hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+            <li><a href="hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+            <li><a href="hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="mevzuat.html">Mevzuatlar</a></li>
+            <li><a href="blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li> 
+            <li><a href="blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
+            <li><a href="blog.html">Blog & Makaleler</a></li>
+          </ul>
+        </li>
+        <li><a href="referanslar.html">Referanslar</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+    <button class="nav-open-btn" aria-label="Menüyü aç"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+<main>
+    <section class="page-header" style="background-image: url('img/banner2.webp');">
+        <div class="container">
+            <h1>Fikirlerinizi Sürdürülebilir Projelere Dönüştürün</h1>
+            <p>Doğru Finansal Kaynak ve Profesyonel Planlama ile Hayallerinizi Kağıt Üzerinden Gerçeğe Taşıyoruz.</p>
+        </div>
+    </section>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="content-grid">
+                
+                <div class="main-content">
+                    <h2>Hibe ve Fon Kaynaklarına Erişimde Profesyonel Destek</h2>
                     <p>Sivil toplum kuruluşlarının en büyük hedeflerinden biri, misyonları doğrultusunda etkili ve sürdürülebilir projeler hayata geçirmektir. Ancak parlak bir fikir; doğru finansal kaynak ve profesyonel bir proje planı olmadan kağıt üzerinde kalmaya mahkumdur. Ulusal ve uluslararası hibe programları, bu noktada STK'lar için büyük bir fırsat sunar.</p>
                     
                     <p><strong>SH Danışmanlık</strong> olarak, proje fikrinizin geliştirilmesinden, uygun hibe programının bulunmasına, başvuru dosyasının hazırlanmasından projenin yürütülmesine kadar tüm aşamalarda size uzman desteği sağlıyoruz. <strong>Proje Döngüsü Yönetimi (PCM)</strong> metodolojisine hakim ekibimizle, başvurularınızın kabul edilme şansını en üst seviyeye çıkarıyoruz.</p>
@@ -48,3 +145,83 @@ permalink: "/hizmet-proje-yazma.html"
                             <p>Kabul edilen projelerinizin faaliyetlerinin planlandığı gibi yürütülmesi, harcamaların bütçeye uygun yapılması ve fon sağlayıcıya sunulacak ara/final raporlarının hazırlanması konularında destek oluruz.</p>
                         </div>
                     </div>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="widget">
+                        <h4>Hizmetlerimiz</h4>
+                        <ul>
+                            <li><a href="hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+                            <li><a href="hizmet-derbis.html">Hizmet Derbis</a></li>
+                            <li><a href="hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+                            <li><a href="hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+                            <li><a href="hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+                            <li><a href="hizmet-proje-yazma.html" class="current">Proje ve Fon Geliştirme</a></li>
+                            <li><a href="hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h4>Projeniz Fonlansın</h4>
+                        <p>Fikirlerinizi profesyonel bir hibe dosyasına dönüştürmek ve başarı şansınızı artırmak için hemen teklif alın.</p>
+                        <a href="iletisim.html" class="btn btn-secondary" style="width: 100%;">Proje Teklifi Al</a>
+                    </div>
+                    <div class="widget">
+                        <h4>Hangi Fon Size Uygun?</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #25d366; font-size: 12px;"></i> Sivil Toplum Destekleri</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #25d366; font-size: 12px;"></i> Gençlik ve Eğitim Fonları</li>
+                            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #25d366; font-size: 12px;"></i> Sosyal Kalkınma Hibeleri</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <p>"Bize Uğrayın, Bürokrasiye Takılmayın"</p>
+                <p>© 2026 SH Danışmanlık. Tüm Hakları Saklıdır.</p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Hızlı Menü</strong></p>
+                <ul>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="referanslar.html">Referanslar</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p><strong>İletişim</strong></p>
+                <p><i class="fas fa-map-marker-alt"></i> Ümraniye, İstanbul</p>
+                <p><i class="fas fa-phone"></i> +90 534 705 42 34</p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5cccbc3cae5d6cdc1c4cbccd6c8c4cbc9ccce8bc6cac8">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Takip Edin</strong></p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="margin-top: 20px; text-align: center; font-size: 14px; color: #999;">
+            <p>© 2026 Tasarım ve Yazılım. Design by <a href="https://akodijital.com" target="_blank" rel="noopener" style="color: #00a8e8; font-weight: 600; text-decoration: none;">AKODİJİTAL</a></p>
+        </div>
+    </div>
+</footer>
+<!-- KURUMSAL WHATSAPP WIDGET (Ako Dijital Standartı - Sol Alt) -->
+<a href="https://wa.me/905347054234" class="wa-floating-btn" target="_blank" rel="noopener" aria-label="WhatsApp üzerinden proje desteği alın">
+    <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+    <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
+</a>
+
+<script src="/js/nav.js"></script>
+
+</body>
+</html>

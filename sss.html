@@ -1,13 +1,50 @@
----
-layout: layouts/fullwidth.html
-title: "Sıkça Sorulan Sorular"
-description: "Dernek kurulumu, vakıf yönetimi, beyanname süreçleri ve STK mevzuatı hakkında en çok merak edilen soruların profesyonel cevapları."
-excerpt: "Aklınızdaki soruların cevapları burada."
-banner_image: "/img/banner3.webp"
-permalink: "/sss.html"
----
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO VE KURUMSAL OTORİTE AYARLARI -->
+    <title>Sıkça Sorulan Sorular | STK, Dernek ve Vakıf Rehberi - SH Danışmanlık</title>
+    <meta name="description" content="Dernek kurulumu, vakıf yönetimi, beyanname süreçleri ve STK mevzuatı hakkında en çok merak edilen soruların profesyonel cevapları.">
+    <meta name="keywords" content="dernek kurmak için kaç kişi gerekir, vakıf kurma şartları, dernek beyannamesi ne zaman verilir, stk danışmanlığı soruları">
+    <link rel="canonical" href="https://shdanismanlik.netlify.app/sss.html">
 
-<style>
+    <!-- GOOGLE FAQ ŞEMASI (JSON-LD) - Arama sonuçlarında soruların görünmesini sağlar -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Dernek kurmak için kaç kişi gereklidir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bir dernek kurmak için en az 7 gerçek veya tüzel kişinin bir araya gelmesi şarttır."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Dernek beyannamesi ne zaman verilir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dernekler, her yılın ilk dört ayı içinde (30 Nisan son gün olmak üzere) bir önceki yılın beyannamesini DERBİS üzerinden vermekle yükümlüdür."
+        }
+      }]
+    }
+    </script>
+
+    <!-- PERFORMANS: LCP (Banner Görseli Ön Yükleme) -->
+    <link rel="preload" as="image" href="img/banner3.webp" fetchpriority="high">
+
+    <!-- PERFORMANS: Font ve İkonların Engelleyici Olmadan Yüklenmesi -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="logo.webp" type="image/webp">
+
+    <style>
         /* KURUMSAL WHATSAPP WIDGET (Sıfır JavaScript - Maksimum Hız - Ako Dijital Standardı) */
         .wa-floating-btn { position: fixed; bottom: 25px; left: 25px; z-index: 9999; display: flex; align-items: center; text-decoration: none; transition: all 0.3s ease; }
         .wa-icon { background-color: #25d366; color: white !important; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
@@ -26,8 +63,66 @@ permalink: "/sss.html"
         .faq-question i { transition: transform 0.3s; font-size: 14px; }
         .faq-item.active .faq-question i { transform: rotate(180deg); }
     </style>
+</head>
+<body>
 
-<!-- İÇERİK ALANI -->
+<header class="main-header">
+  <div class="container header-container">
+    <a href="index.html" class="logo-container">
+      <img src="logo.webp" alt="SH Danışmanlık" class="logo-img" width="180" height="55" />
+    </a>
+    <nav class="main-nav">
+      <button class="nav-close-btn" aria-label="Menüyü kapat"><i class="fas fa-times"></i></button>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li class="dropdown">
+          <a href="#" class="active">Kurumsal <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="sss.html">Sıkça Sorulan Sorular</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="hizmetlerimiz.html">Hizmetlerimiz <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="hizmet-dernek-kurulusu.html">Dernek Kuruluşu</a></li>
+           <li><a href="hizmet-derbis.html">DERBİS İşlemleri</a></li>
+            <li><a href="hizmet-vakif-kurulusu.html">Vakıf Kuruluşu</a></li>
+            <li><a href="hizmet-genel-kurul.html">Genel Kurul Yönetimi</a></li>
+            <li><a href="hizmet-mali-danismanlik.html">Mali Danışmanlık</a></li>
+            <li><a href="hizmet-proje-yazma.html">Proje ve Fon Geliştirme</a></li>
+            <li><a href="hizmet-yasal-danismanlik.html">Yasal Danışmanlık</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">Bilgi Bankası <i class="fas fa-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="mevzuat.html">Mevzuatlar</a></li>
+            <li><a href="blog-dernek-yonetici-sorumluluklari.html">Yönetici Sorumlulukları</a></li> 
+            <li><a href="blog-stk-iktisadi-isletme-avantajlari.html">İktisadi İşletme Avantajları</a></li>
+            <li><a href="blog.html">Blog & Makaleler</a></li>
+          </ul>
+        </li>
+        <li><a href="referanslar.html">Referanslar</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+    <button class="nav-open-btn" aria-label="Menüyü aç"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+
+
+    <main>
+        <!-- İÇ SAYFA BAŞLIK BANNER'I -->
+        <section class="page-header" style="background-image: url('img/banner3.webp');">
+            <div class="container">
+                <h1>Sıkça Sorulan Sorular</h1>
+                <p>Aklınızdaki soruların cevapları burada.</p>
+            </div>
+        </section>
+
+        <!-- İÇERİK ALANI -->
         <section class="page-content">
             <div class="container">
                 <div class="content-grid">
@@ -72,25 +167,53 @@ permalink: "/sss.html"
                 </div>
             </div>
         </section>
+    </main>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var questions = document.querySelectorAll('.faq-question');
-    questions.forEach(function(question) {
-        question.addEventListener('click', function() {
-            var item = this.parentElement;
-            var isActive = item.classList.contains('active');
-            
-            // Close all items
-            document.querySelectorAll('.faq-item').forEach(function(el) {
-                el.classList.remove('active');
-            });
-            
-            // Toggle current
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
-    });
-});
-</script>
+</a>
+   <footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <p>"Bize Uğrayın, Bürokrasiye Takılmayın"</p>
+                <p>© 2026 SH Danışmanlık. Tüm Hakları Saklıdır.</p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Hızlı Menü</strong></p>
+                <ul>
+                    <li><a href="hakkimizda.html">Hakkımızda</a></li>
+                    <li><a href="referanslar.html">Referanslar</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <p><strong>İletişim</strong></p>
+                <p><i class="fas fa-map-marker-alt"></i> Ümraniye, İstanbul</p>
+                <p><i class="fas fa-phone"></i> +90 534 705 42 34</p>
+                <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="422b2c242d02312a26232c2b312f232c2e2b296c212d2f">[email&#160;protected]</a></p>
+            </div>
+            <div class="footer-col">
+                <p><strong>Takip Edin</strong></p>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="margin-top: 20px; text-align: center; font-size: 14px; color: #999;">
+            <p>© 2026 Tasarım ve Yazılım. Design by <a href="https://akodijital.com" target="_blank" rel="noopener" style="color: #00a8e8; font-weight: 600; text-decoration: none;">AKODİJİTAL</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- KURUMSAL WHATSAPP WIDGET (Ako Dijital Standartı - Sol Alt) -->
+<a href="https://wa.me/905347054234" class="wa-floating-btn" target="_blank" rel="noopener" aria-label="WhatsApp üzerinden bizimle tanışın">
+    <div class="wa-icon"><i class="fab fa-whatsapp"></i></div>
+    <div class="wa-label">Size Nasıl Yardımcı Olabiliriz?</div>
+</a>
+
+<script src="/js/nav.js"></script>
+
+</body>
+</html>
