@@ -20,7 +20,7 @@ tags:
   - dernekler kanunu 2026
   - derbis kaydı
   - stk danışmanlık
-image: /img/banner3.webp
+image: /img/banner1.webp
 description: Ümraniye'de dernek veya vakıf kurmak mı istiyorsunuz? Yasal
   süreçler, gerekli belgeler, DERBİS kaydı ve uzman danışmanlık hizmetleri
   hakkında bilmeniz gereken her şey bu rehberde.
