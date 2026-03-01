@@ -31,21 +31,21 @@ collections:
       - label: "Kategori"
         field: category
     view_filters:
-      - label: "Mevzuat"
-        field: category
-        pattern: "Mevzuat"
       - label: "Uzman Rehberi"
         field: category
         pattern: "Uzman Rehberi"
-      - label: "Hibe Firsati"
+      - label: "Mevzuat"
         field: category
-        pattern: "Hibe Firsati"
+        pattern: "Mevzuat"
+      - label: "Hibe & Fon"
+        field: category
+        pattern: "Hibe Fon Firsatlari"
+      - label: "Duyuru & Haberler"
+        field: category
+        pattern: "Duyuru Haberler"
       - label: "Bilgi Notu"
         field: category
         pattern: "Bilgi Notu"
-      - label: "Duyuru"
-        field: category
-        pattern: "Duyuru"
     fields:
       - label: "Baslik"
         name: "title"
@@ -60,11 +60,11 @@ collections:
         name: "category"
         widget: "select"
         options:
-          - { label: "Mevzuat", value: "Mevzuat" }
           - { label: "Uzman Rehberi", value: "Uzman Rehberi" }
-          - { label: "Hibe Firsati", value: "Hibe Firsati" }
+          - { label: "Mevzuat & Mevzuat Haberleri", value: "Mevzuat" }
+          - { label: "Hibe & Fon Fırsatları", value: "Hibe Fon Firsatlari" }
+          - { label: "Duyuru & Haberler", value: "Duyuru Haberler" }
           - { label: "Bilgi Notu", value: "Bilgi Notu" }
-          - { label: "Duyuru", value: "Duyuru" }
 
       - label: "Yayin Tarihi"
         name: "date"
@@ -91,7 +91,7 @@ collections:
   #  HİZMET SAYFALARI
   # ═══════════════════════════════════════
   - name: "services"
-    label: "Hizmet Sayfalari"
+    label: "Hizmetlerimiz"
     label_singular: "Hizmet"
     files:
       - file: "hizmet-dernek-kurulusu.html"
@@ -139,7 +139,7 @@ collections:
         fields: *hizmet_fields
 
   # ═══════════════════════════════════════
-  #  KURUMSAL SAYFALAR
+  #  KURUMSAL
   # ═══════════════════════════════════════
   - name: "kurumsal"
     label: "Kurumsal"
@@ -167,6 +167,49 @@ collections:
           - { label: "Banner Gorseli", name: "banner_image", widget: "image", required: false }
           - { label: "Permalink", name: "permalink", widget: "string" }
           - { label: "Icerik", name: "body", widget: "markdown" }
+
+  # ═══════════════════════════════════════
+  #  BİLGİ BANKASI
+  # ═══════════════════════════════════════
+  - name: "bilgi-bankasi"
+    label: "Bilgi Bankası"
+    label_singular: "Bilgi"
+    folder: "content/bilgi-bankasi"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    sort: "date:desc"
+    summary: "{{title}} — {{date | date('DD.MM.YYYY')}}"
+    fields:
+      - label: "Baslik"
+        name: "title"
+        widget: "string"
+
+      - label: "Kapak Gorseli"
+        name: "image"
+        widget: "image"
+        required: false
+
+      - label: "Yayin Tarihi"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+
+      - label: "Kisa Ozet"
+        name: "excerpt"
+        widget: "text"
+        required: false
+
+      - label: "Icerik"
+        name: "body"
+        widget: "markdown"
+
+      - label: "SEO Aciklama"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Google sonuclarinda gorunecek aciklama (max 160 karakter)"
 
   # ═══════════════════════════════════════
   #  SITE AYARLARI
