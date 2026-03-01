@@ -1,19 +1,28 @@
-/* AKO DİJİTAL — Nav JS — Tüm sayfalar için */
 document.addEventListener('DOMContentLoaded', function() {
     var openBtn = document.querySelector('.nav-open-btn');
     var closeBtn = document.querySelector('.nav-close-btn');
     var nav = document.querySelector('.main-nav');
+
+    // Overlay yoksa oluştur (style.css .mobile-nav-overlay bekliyor)
     var overlay = document.querySelector('.mobile-nav-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-nav-overlay';
+        document.body.appendChild(overlay);
+    }
 
     function openNav() {
-        if (nav) nav.classList.add('active');
+        nav.classList.add('active');
         if (closeBtn) closeBtn.classList.add('mobile-show');
-        if (overlay) overlay.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
+
     function closeNav() {
-        if (nav) nav.classList.remove('active');
+        nav.classList.remove('active');
         if (closeBtn) closeBtn.classList.remove('mobile-show');
-        if (overlay) overlay.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
         document.querySelectorAll('.dropdown.mob-open').forEach(function(d) {
             d.classList.remove('mob-open');
         });
@@ -23,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeBtn) closeBtn.addEventListener('click', closeNav);
     if (overlay) overlay.addEventListener('click', closeNav);
 
-    // Dropdown accordion — mob-open class
+    // Mobil dropdown toggle
     document.querySelectorAll('.main-nav .dropdown > a').forEach(function(link) {
         link.addEventListener('click', function(e) {
             if (window.innerWidth <= 992) {
@@ -38,5 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+    });
+
+    // Resize'da kapat
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            closeNav();
+        }
     });
 });
