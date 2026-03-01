@@ -8,76 +8,49 @@ permalink: "/blog.html"
 ---
 
 <div class="main-content">
-<!-- Blog Yazısı 1 -->
-                    <article class="blog-post-card">
-                        <a href="/blog-yazi-detay" class="post-image-link">
-                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800" alt="Dernek ve Vakıf Farkları" width="800" height="450" loading="lazy">
-                        </a>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 15 Ekim 2025</span>
-                                <span><i class="fas fa-tag"></i> Rehber</span>
-                            </div>
-                            <h2 class="post-title"><a href="/blog-yazi-detay">Dernek ve Vakıf Arasındaki 5 Temel Fark Nedir?</a></h2>
-                            <p class="post-excerpt">Bir sosyal sorumluluk projesine başlarken en sık karşılaşılan sorulardan biri, yapının dernek mi yoksa vakıf mı olması gerektiğidir...</p>
-                            <a href="/blog-yazi-detay" class="btn-read-more">Makaleyi Oku <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                   <article class="blog-post-card">
-                        <a href="/blog-dernek-yonetici-sorumluluklari" class="post-image-link">
-                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800" alt="Dernek Yöneticilerinin Yasal Sorumlulukları" width="800" height="450" loading="lazy">
-                        </a>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 04 Ocak 2026</span>
-                                <span><i class="fas fa-tag"></i> Uzman Rehberi</span>
-                                <span style="background: #1a237e; color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px;">
-                                    <i class="fas fa-certificate"></i> Kapsamlı Kılavuz
-                                </span>
-                            </div>
-                            <h2 class="post-title">
-                                <a href="/blog-dernek-yonetici-sorumluluklari">Dernek Yöneticilerinin Göz Ardı Etmemesi Gereken Yasal Sorumluluklar</a>
-                            </h2>
-                            <p class="post-excerpt">Dernek başkanı ve yönetim kurulu üyelerinin yasal ve cezai sorumluluklarını detaylı inceleyen kapsamlı rehber. Mali yükümlülükler, beyanname süreçleri, resmi bildirimler ve hata durumlarında karşılaşılabilecek yaptırımlar hakkında her şey...</p>
-                            <a href="/blog-dernek-yonetici-sorumluluklari" class="btn-read-more">Rehberi İncele <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="blog-post-card">
-                        <a href="/blog-stk-iktisadi-isletme-avantajlari" class="post-image-link">
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800" alt="STK İktisadi İşletme Avantajları" width="800" height="450" loading="lazy">
-                        </a>
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span><i class="fas fa-calendar-alt"></i> 04 Ocak 2026</span>
-                                <span><i class="fas fa-tag"></i> Uzman Rehberi</span>
-                                <span style="background: #25d366; color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px;">
-                                    <i class="fas fa-chart-line"></i> Finansal Strateji
-                                </span>
-                            </div>
-                            <h2 class="post-title">
-                                <a href="/blog-stk-iktisadi-isletme-avantajlari">STK'lar İçin İktisadi İşletme Kurmanın 5 Kritik Avantajı</a>
-                            </h2>
-                            <p class="post-excerpt">Dernek ve vakıfların sürdürülebilir gelir modeli oluşturması için iktisadi işletme kurmanın tüm avantajları. Vergi kolaylıkları, kurumsal güvenilirlik, finansal bağımsızlık ve istihdam yaratma konularında detaylı analiz...</p>
-                            <a href="/blog-stk-iktisadi-isletme-avantajlari" class="btn-read-more">Rehberi İncele <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
+  {% for post in collections.blog %}
+  <article class="blog-post-card">
+    <a href="{{ post.url }}" class="post-image-link">
+      {% if post.data.image %}
+        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" width="800" height="450" loading="lazy">
+      {% else %}
+        <img src="/img/banner1.webp" alt="{{ post.data.title }}" width="800" height="450" loading="lazy">
+      {% endif %}
+    </a>
+    <div class="post-content">
+      <div class="post-meta">
+        <span><i class="fas fa-calendar-alt"></i> {{ post.date | turkishDate }}</span>
+        {% if post.data.category %}
+          <span><i class="fas fa-tag"></i> {{ post.data.category }}</span>
+        {% endif %}
+      </div>
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h2>
+      {% if post.data.excerpt %}
+        <p class="post-excerpt">{{ post.data.excerpt }}</p>
+      {% endif %}
+      <a href="{{ post.url }}" class="btn-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </article>
+  {% else %}
+  <p>Henüz makale bulunmamaktadır.</p>
+  {% endfor %}
 </div>
 
 <aside class="sidebar">
-                    <div class="widget">
-                        <h4>Bilgi Bankası</h4>
-                        <ul>
-                            <li><a href="/mevzuat">Önemli Mevzuatlar</a></li>
-                            <li><a href="/blog-dernek-yonetici-sorumluluklari">Yönetici Sorumlulukları</a></li>
-                            <li><a href="/blog-stk-iktisadi-isletme-avantajlari">İktisadi İşletme Avantajları</a></li>
-                            <li><a href="/blog" class="current">Blog & Makaleler</a></li>
-                        </ul>
-                    </div>
-                    <div class="widget">
-                        <h4>Mevzuat Karmaşık Mı Geldi?</h4>
-                        <p>Yasal süreçlerde hata yapmamak ve güncel bilgilere ulaşmak için uzman ekibimizden destek alın.</p>
-                        <a href="/iletisim" class="btn btn-secondary" style="width: 100%;">Danışmanlık Al</a>
-                    </div>
-                </aside>
+  <div class="widget">
+    <h4>Bilgi Bankası</h4>
+    <ul>
+      <li><a href="/mevzuat">Önemli Mevzuatlar</a></li>
+      <li><a href="/blog-dernek-yonetici-sorumluluklari">Yönetici Sorumlulukları</a></li>
+      <li><a href="/blog-stk-iktisadi-isletme-avantajlari">İktisadi İşletme Avantajları</a></li>
+      <li><a href="/blog" class="current">Blog & Makaleler</a></li>
+    </ul>
+  </div>
+  <div class="widget">
+    <h4>Mevzuat Karmaşık Mı Geldi?</h4>
+    <p>Yasal süreçlerde hata yapmamak ve güncel bilgilere ulaşmak için uzman ekibimizden destek alın.</p>
+    <a href="/iletisim" class="btn btn-secondary" style="width: 100%;">Danışmanlık Al</a>
+  </div>
+</aside>
