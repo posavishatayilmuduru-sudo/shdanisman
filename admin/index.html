@@ -13,12 +13,27 @@
     [class*="ToolbarButton"]:hover { background: #e8f0fe !important; }
   </style>
 
-  <!-- ✅ EKSİK OLAN BU SATIRDI: Netlify Identity Widget -->
+  <!-- Netlify Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <!-- Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@%5E3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
+  <!-- Decap CMS buraya render eder — BU DIV ŞART -->
+  <div id="nc-root"></div>
+
+  <!-- Login sonrası yönlendirme -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function(user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function() {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
+  <!-- Decap CMS -->
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
