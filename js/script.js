@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ─── DESKTOP DROPDOWN HOVER OVERFLOW ─── */
     var mainHeader = document.querySelector('.main-header');
     document.querySelectorAll('.main-nav .dropdown').forEach(function(dropdown) {
-        dropdown.addEventListener('mouseenter', function() { if (mainHeader) mainHeader.classList.add('menu-open'); });
-        dropdown.addEventListener('mouseleave', function() { if (mainHeader) mainHeader.classList.remove('menu-open'); });
+        dropdown.addEventListener('mouseenter', function() { if (mainHeader) mainHeader.style.overflow = "visible"; });
+        dropdown.addEventListener('mouseleave', function() { if (mainHeader) mainHeader.style.overflow = ""; });
     });
 
     /* ═══════════════════════════════════════════════
@@ -125,14 +125,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function openNav() {
         if (nav) nav.classList.add('active');
-        if (closeBtn) closeBtn.classList.add('mobile-show');
         if (overlay) overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
     function closeNav() {
         if (nav) nav.classList.remove('active');
-        if (closeBtn) closeBtn.classList.remove('mobile-show');
         if (overlay) overlay.classList.remove('active');
         document.body.style.overflow = '';
         document.querySelectorAll('.dropdown.mob-open').forEach(function(d) {
@@ -140,7 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (openBtn) openBtn.addEventListener('click', openNav);
+    if (openBtn) {
+        openBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (nav && nav.classList.contains('active')) { closeNav(); } else { openNav(); }
+        });
+    }
     if (closeBtn) closeBtn.addEventListener('click', closeNav);
     if (overlay) overlay.addEventListener('click', closeNav);
 
@@ -149,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             if (window.innerWidth <= 992) {
                 e.preventDefault();
+                e.stopPropagation();
                 var parent = this.parentElement;
                 var wasOpen = parent.classList.contains('mob-open');
                 // Tüm açık dropdown'ları kapat

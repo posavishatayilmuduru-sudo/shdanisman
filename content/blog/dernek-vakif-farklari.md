@@ -3,7 +3,7 @@ layout: layouts/blog-post.html
 title: "Dernek ve Vakıf Arasındaki 5 Temel Fark Nedir?"
 description: "Dernek mi yoksa vakıf mı kurmalısınız? Türkiye'deki STK mevzuatına göre dernek ve vakıf arasındaki yasal, mali ve idari 5 temel farkı detaylarıyla inceleyin."
 date: 2024-10-15
-category: "Rehber"
+category: "Uzman Rehberi"
 image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800"
 excerpt: "Sivil toplum yapınızı belirlerken dernek ve vakıf arasındaki yasal, mali ve idari farkları bilin."
 ---

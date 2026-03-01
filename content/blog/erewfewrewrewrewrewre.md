@@ -2,7 +2,7 @@
 title: erewfewrewrewrewrewre
 image: /img/quantum-system.jpg
 image_alt: oeoroeoreworoe wgfhy gfhfhgfh g
-category: Blog-Makaleler
+category: "Uzman Rehberi"
 date: 2026-02-20
 author: "Abdullah "
 excerpt: g hfh fdggfh  rergfdge tret ertre tret e gfgfdgeregregreg

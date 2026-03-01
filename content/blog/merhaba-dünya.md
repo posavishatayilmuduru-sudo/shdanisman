@@ -4,7 +4,7 @@ excerpt: wweffggrgreg ok kjhuyhıjıhyugytbjkjonıy u u u bb j  b uyıu ııu u�
 draft: false
 layout: layouts/blog-post.html
 title: "Merhaba Dünya "
-category: STK Rehberi
+category: "Uzman Rehberi"
 date: 2026-02-20
 description: kjdjhfdkgjilsdşkfkjdfhjklv kjavndsdmlvbklaşfa
 featured: true

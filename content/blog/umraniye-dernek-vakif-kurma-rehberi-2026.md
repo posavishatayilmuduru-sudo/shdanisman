@@ -1,16 +1,14 @@
 ---
-excerpt: Ümraniye'de dernek veya vakıf kurmak istiyorsanız doğru yerdesiniz.
-  Yasal süreçten DERBİS kaydına, tüzük hazırlamadan resmi başvuruya kadar tüm
-  adımları uzman gözüyle a
-draft: false
-image_alt: Ümraniye'de dernek ve vakıf kurma danışmanlık hizmeti
 layout: layouts/blog-post.html
-author: SH Danışmanlık Uzmanları
-featured: true
-category: Uzman Rehberi
-date: 2026-02-20
+title: "Ümraniye'de Dernek veya Vakıf Kurmak İsteyenler İçin Eksiksiz Rehber (2026)"
+description: "Ümraniye'de dernek veya vakıf kurmak mı istiyorsunuz? Yasal süreçler, gerekli belgeler, DERBİS kaydı ve uzman danışmanlık hizmetleri hakkında bilmeniz gereken her şey bu rehberde."
+date: "2026-02-20"
+author: "SH Danışmanlık Uzmanları"
+category: "Uzman Rehberi"
+image: "/img/umraniye-stk-danismanlik-rehber.webp"
+image_alt: "Ümraniye'de dernek ve vakıf kurma danışmanlık hizmeti"
 read_time: 12
-title: Ümraniye'de Dernek veya Vakıf Kurmak İsteyenler İçin Eksiksiz Rehber (2026)
+excerpt: "Ümraniye'de dernek veya vakıf kurmak istiyorsanız doğru yerdesiniz. Yasal süreçten DERBİS kaydına, tüzük hazırlamadan resmi başvuruya kadar tüm adımları uzman gözüyle anlattık."
 tags:
   - ümraniye dernek kurma
   - ümraniye vakıf kurma
@@ -20,10 +18,8 @@ tags:
   - dernekler kanunu 2026
   - derbis kaydı
   - stk danışmanlık
-image: /img/umraniye-stk-danismanlik-rehber.webp
-description: Ümraniye'de dernek veya vakıf kurmak mı istiyorsunuz? Yasal
-  süreçler, gerekli belgeler, DERBİS kaydı ve uzman danışmanlık hizmetleri
-  hakkında bilmeniz gereken her şey bu rehberde.
+featured: true
+draft: false
 ---
 
 # Ümraniye'de Dernek veya Vakıf Kurmak İsteyenler İçin Eksiksiz Rehber (2026)
